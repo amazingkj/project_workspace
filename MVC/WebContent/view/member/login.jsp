@@ -38,9 +38,9 @@
 </c:if>
   
 <c:if test="${!empty id}"> 
-${id}님 로그인을 환영합니다. <br/>
+${id}님 로그인을 환영합니다.<br/>
 
-<a href="logout.jsp">[로그아웃]</a>
+<a href="index.jsp">[로그아웃]</a>
 <%-- 로그인 페이지 --%>
   </c:if>
 
