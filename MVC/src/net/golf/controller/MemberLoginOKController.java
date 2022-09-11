@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import net.golf.dao.MemberDAOImpl;
 import net.golf.vo.MemberVO;
+import net.golf.vo.MemberVO;
 
 
-/* 로그인 인증 컨트롤러 클래스: 아이디를 기준으로 회원정보를 검색한 다음 회원정보가 있는 경우는 비번을 비교해서 비번이 같은 경우만
+/* 로그인 인증 컨트롤러 클래스: 
+ * 아이디를 기준으로 회원정보를 검색한 다음 회원정보가 있는 경우는 비번을 비교해서 비번이 같은 경우만
  * 로그인 인증 처리한다. 로그인 인증했을때 세션을 사용한다.
  */
 public class MemberLoginOKController implements Action {

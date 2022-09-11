@@ -20,7 +20,7 @@ public class MemberIDCheckController implements Action {
 		String m_id=request.getParameter("id");//비동기식으로 전달된 아이디값을 저장
 		
 		MemberDAOImpl mdao=new MemberDAOImpl();
-		MemberVO db_id=mdao.id_Check(m_id);//오라클에 저장된 아이디 검색
+		MemberVO db_id=mdao.idCheck(m_id);//오라클에 저장된 아이디 검색
 		
 		int re=-1;//중복아이디가 아닌경우 반환값
 		
