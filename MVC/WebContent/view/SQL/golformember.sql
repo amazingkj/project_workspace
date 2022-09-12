@@ -84,13 +84,15 @@ select count(*) from golformemberNew;  --테이블 내 저장된 레코드 개�
 select m_golf_seq.nextval from dual;
 
 
-insert into golformemberNew (m_id,m_pw,m_phone,m_email,m_gender,m_date,m_state) 
-values ('h','hi','010-2222-2222','ddd@ggg.gg','2',sysdate,1);
+insert into golformemberNew (m_no,m_id,m_pw,m_phone,m_email,m_gender,m_date,m_state) 
+values (m_golf_seq.nextval,'test','test','010-2332-2332','ddd@test.gg','male',sysdate,1);
 
 drop SEQUENCE m_golf_seq;
 
 
 
+select * from golformemberNew where m_id='11' and m_state=1;
+select * from golformemberNew where m_id='h' and m_state=1;
 
 
 

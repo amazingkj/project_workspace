@@ -4,7 +4,7 @@
 <script src="./js/jquery.js"></script>
 
 <script>
-   function check() {
+   function join_check() {
       if ($.trim($('#id').val()) == '') {//trim()함수는 양쪽 공백을 제거
          alert('아이디를 입력하세요!');
          $('#id').val('').focus();
@@ -93,7 +93,7 @@
            type:"POST",//데이터를 서버로 보내는 방법
           //url:"./member/member_idcheck.jsp",    
            url:"idcheck.do", //아작스 서버 주소 파일명
-           data: {"id":$mem_id},  //좌측 id 피라미터 이름에 우측 $mem_id변수값을 저장
+           data: {"id":$m_id},  //좌측 id 피라미터 이름에 우측 $mem_id변수값을 저장
            datatype:"int",//서버의 실행된 결과값을 사용자로 받아오는 방법
            success: function (data) {//success는 아작스로 받아오는것이 성공했을경우
            	//서버 데이터를 data변수에 저장
@@ -110,7 +110,7 @@
          		$("#id_Check").text('');
          		$("#id_Check").show();
          		$("#id_Check").append($newtext);
-         		$("#m_pwd").focus();
+         		$("#m_pw").focus();
          	  }  	    	  
            },
        	  error:function(){//비동기식 아작스로 서버디비 데이터를
@@ -129,21 +129,18 @@
 
 <body class="join">
 
-<form name="m" method="post" action="join_ok.do" onsubmit="return join_check();"
-  enctype="multipart/form-data">      
-        
+<form name="m" method="post" action="join_ok.do" onsubmit="return join_check();">      
 <div class="joinForm">
-<input type="text" name="m_id" id="id" class="textField" placeholder="아이디">
-<input type=button class="CheckBtn" value=중복확인  onclick="id_Check();">
-        <span id="id_Check"></span>
-<input type="password" name="m_pw" id="pw" class="textField" placeholder="비밀번호"><br>
+<input type="text" name="m_id" id="m_id" class="textField" placeholder="아이디">
+<input type=button class="CheckBtn" id="id_Check" value=중복확인  onclick="idCheck();"/>
+<input type="password" name="m_pw" id="m_pwd" class="textField" placeholder="비밀번호"><br>
 <input type="password" name="pwCheck" id="pwCheck" class="textField" placeholder="비밀번호 확인"><br>
-<input type="tel" name=m_phone class="textField" id="phone"pattern="^[0][1][0]-\d{4}-\d{4}$" placeholder="휴대폰 번호"><br>
-<input type=email name=m_email id=email class="textField" placeholder="이메일"><br>
-<input type=button class="CheckBtn" value=이메일인증>
-<input type="radio" name="m_gender" class="gender" value="1"><label>남</label>
-<input type="radio" name="m_gender" class="gender" value="2"><label>여</label>
-<input type=submit class="submitBtn" value=회원가입>
+<input type="tel" name="m_phone" class="textField" id="phone"pattern="^[0][1][0]-\d{4}-\d{4}$" placeholder="휴대폰 번호"><br>
+<input type="email" name="m_email" id="m_email" class="textField" placeholder="이메일"><br>
+<input type="button" class="CheckBtn" value=이메일인증>
+<input type="radio" name="m_gender" id="m_gender" class="gender" value="male"><label id="m_gender">남</label>
+<input type="radio" name="m_gender" id="m_gender" class="gender" value="female"><label id="m_gender">여</label>
+<input type="submit" class="submitBtn" value=회원가입>
 </div>
 </form>
 </body>

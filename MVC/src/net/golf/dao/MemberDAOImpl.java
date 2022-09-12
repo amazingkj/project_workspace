@@ -38,14 +38,14 @@ public class MemberDAOImpl {//회원관리 JDBC
 		
 		try {
 			con=ds.getConnection();//커넥션 풀 관리 ds로 db연결 con생성
-			sql="select * from memberT where mem_id=?";
+			sql="select * from golformemberNew where m_id=?";
 			pt = con.prepareStatement(sql);//쿼리문을 미리 컴파일하여 수행할 pt생성
 			pt.setString(1,id);//쿼리문의 첫번째 물음표에 문자열로 아이디저장
 			rs=pt.executeQuery();//검색 쿼리문 수행후 결과레코드를 rs에 저장
 			
 			if(rs.next()) {//다음 레코드 행이 존재하면 참
 				m=new MemberVO();
-				m.setM_id(rs.getString("mem_id"));//mem_id컬럼으로 부터 문자열로 아이디값을
+				m.setM_id(rs.getString("m_id"));//mem_id컬럼으로 부터 문자열로 아이디값을
 				//가져와서 setter()메서드에 저장
 			}
 		}catch(Exception e) {e.printStackTrace();}
@@ -67,8 +67,8 @@ public class MemberDAOImpl {//회원관리 JDBC
 		
 		try {
 			con=ds.getConnection();
-			sql="insert into golformemberNew (m_id,m_pw,m_phone,m_email,m_gender,m_date,m_state)"
-					+ "values(?,?,?,?,?,sysdate,1)";
+			sql="insert into golformemberNew (m_no,m_id,m_pw,m_phone,m_email,m_gender,m_date,m_state)"
+					+ "values(m_golf_seq.nextval,?,?,?,?,?,sysdate,1)";
 
 			pt=con.prepareStatement(sql);
 			pt.setString(1,m.getM_id());
@@ -76,8 +76,7 @@ public class MemberDAOImpl {//회원관리 JDBC
 			pt.setString(3,m.getM_phone());
 			pt.setString(4,m.getM_email());
 			pt.setString(5,m.getM_gender());
-			pt.setString(6,m.getM_date());
-			pt.setInt(7,m.getM_state());
+	
 			
 			re=pt.executeUpdate();//저장 쿼리문 수행후 성공한 레코드 행의 개수를 반환
 			
@@ -98,7 +97,7 @@ public class MemberDAOImpl {//회원관리 JDBC
 		
 		try{
 			con=ds.getConnection();
-			sql="select mem_pwd from memberT where m_id=? and m_name=?";
+			sql="select m_pw from golformemberNew where m_id=? and m_name=?";
 			//회원아이디와 이름을 기준으로 오라클로부터 비번을 검색
 			pt=con.prepareStatement(sql);
 			pt.setString(1,m.getM_id());
@@ -134,7 +133,7 @@ public class MemberDAOImpl {//회원관리 JDBC
 			
 			if(rs.next()) {
 				m=new MemberVO();
-				m.setM_id(rs.getString("m_id"));
+				m.setM_pw(rs.getString("m_pw"));
 				m.setM_file(rs.getString("m_file"));//프로필 사진 경로를 저장
 			}
 		}catch(Exception e) {e.printStackTrace();}

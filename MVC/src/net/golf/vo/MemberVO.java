@@ -16,6 +16,8 @@ public class MemberVO {//자바 저장 빈 클래스, 되도록이면 네임패�
 	private int m_state;
 	private String m_delcont;
 	private String m_deldate;
+	
+	
 	public int getM_no() {
 		return m_no;
 	}

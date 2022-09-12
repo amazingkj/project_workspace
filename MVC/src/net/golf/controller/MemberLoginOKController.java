@@ -22,7 +22,7 @@ public class MemberLoginOKController implements Action {
 			HttpServletResponse response) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
+		//???
 		request.setCharacterEncoding("utf-8");
 		
 		String id=request.getParameter("id");
@@ -34,13 +34,13 @@ public class MemberLoginOKController implements Action {
 		
 		if(dm==null) {
 			out.println("<script>");
-			out.println("alert('회원정보가 검색되지 않습니다!');");
+			out.println("alert('회원정보가 검색되지 않습니다! 가입 후 이용해주세요.');");
 			out.println("history.go(-1);");//뒤로 한칸 이동
 			out.println("</script>");
 		}else {
 			if(!dm.getM_pw().equals(pw)) {
 				out.println("<script>");
-				out.println("alert('비번이 다릅니다!');");
+				out.println("alert('아이디 또는 비밀번호가 유효하지 않습니다.');");
 				out.println("history.back();");//뒤로 한칸 이동
 				out.println("</script>");
 			}else {//비번이 같아서 로그인 인증 된 경우
