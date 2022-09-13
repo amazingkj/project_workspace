@@ -45,7 +45,7 @@ public class MemberDAOImpl {//회원관리 JDBC
 			
 			if(rs.next()) {//다음 레코드 행이 존재하면 참
 				m=new MemberVO();
-				m.setM_id(rs.getString("m_id"));//mem_id컬럼으로 부터 문자열로 아이디값을
+				m.setM_id(rs.getString("m_id"));//m_id컬럼으로 부터 문자열로 아이디값을
 				//가져와서 setter()메서드에 저장
 			}
 		}catch(Exception e) {e.printStackTrace();}
