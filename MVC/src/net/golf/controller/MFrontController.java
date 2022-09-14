@@ -57,7 +57,7 @@ public class MFrontController extends HttpServlet {
 			try {
 			  StringTokenizer st=new StringTokenizer(value,"|");//|를 기준으로 문자를 분리	
 			  String url_1=st.nextToken();//분리된 토큰 문자열을 execute를 구함.
-			  String url_2=st.nextToken();//|이후 풀패키지 경로를 구함.=>net.daum.controller.컨트롤러클래스명
+			  String url_2=st.nextToken();//|이후 풀패키지 경로를 구함.=>net.golf.controller.컨트롤러클래스명
 			  Class url=Class.forName(url_2);
 			  
 			  action=(Action)url.newInstance();
