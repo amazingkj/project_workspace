@@ -16,7 +16,7 @@ public class BoardListController implements Action {
 			HttpServletResponse response) throws Exception {
 		int page=1;//쪽번호(페이징 쪽나누기에서 페이지 번호)
 		int limit=10;
-		String find_field=null;//검색 필드(board_title,board_cont)
+		String find_field=null;//검색 필드(b_title,b_cont)
 		String find_name=null;//검색어
 		
 		if(request.getParameter("page") != null) {//get 으로 전달된 쪽번호가 있는 경우 실행
@@ -49,7 +49,7 @@ public class BoardListController implements Action {
 	    request.setAttribute("endpage",endpage);
 	    request.setAttribute("maxpage",maxpage);
 	    request.setAttribute("listcount",listcount);//레코드 개수
-	    request.setAttribute("find_field",find_field);//board_title,board_cont 검색필드 저장
+	    request.setAttribute("find_field",find_field);//b_title,b_cont 검색필드 저장
 	    request.setAttribute("find_name",find_name);//검색어
 	    
 	    ActionForward forward=new ActionForward();

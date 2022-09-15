@@ -36,9 +36,10 @@
 	<thead>
 		<tr>
 			<th scope="col" class="boardNo"><a href="#">번호</a></th>
-			<th scope="col" class="boardSubject"><a href="#">제목</a></th>
+			<th scope="col" class="boardSubject" style="text-align: left;padding-left: 5px"><a href="#">제목</a></th>
 			<th scope="col" class="boardWriter"><span>글쓴이</span></th>
 			<th scope="col" class="boardDate"><a href="#">날짜</a></th>
+			<th scope="col" class="boardlike"><span>좋아요</span></th>
 			<th scope="col" class="boardView"><a href="#">조회수</a></th>
 		</tr>
 	</thead>
@@ -55,20 +56,21 @@
    		      ${b.b_ref}
        		</c:if>&nbsp;</td>
 
-			<td class=boardSubject>
-			<c:if test="${b.board_step != 0}"> <%--답변글일때만 실행되고 들여쓰기와 답변글 이미지가 나옴 --%>
+			<td class=boardSubject style="text-align: left;padding-left: 5px">
+			<c:if test="${b.b_step != 0}"> <%--답변글일때만 실행되고 들여쓰기와 답변글 이미지가 나옴 --%>
          	<c:forEach begin="1" end="${b.b_step}" step="1">
         		  &nbsp; <%--답변글만큼 들여쓰기 --%>
         	 </c:forEach>
-         	<i class="fab fa-replyd"></i><%--답변글 이미지  --%>
+         	<i class="fas fa-reply fa-rotate-180"style="font-size:1.7em;color:#cdcdcd"></i><%--답변글 이미지  --%>
      	   </c:if>
-     		 <a href="b_cont.do?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a>
+     		 <a href="board_cont.do?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a>
    			   <%-- *.do?board_no=번호&page=쪽번호&state=cont 주소창에 노출되는 get방식(쿼리스트링 방식)으로 3개의 피라미터
     		  값을 &기호로 구분해서 전달함. --%>
     		</td>
 			
        			<td class="boardWriter">${b.b_name}</td>
          		<td class="boardDate">${b.b_date}</td>
+         		<td class="boardlike"><i class="fas fa-heart" style="color:#56F569"></i>&nbsp;&nbsp;&nbsp;0</td>
      			<td class="boardView">${b.b_hit}</td>
 			
 			 </tr>
@@ -84,7 +86,7 @@
 
 	</tbody>
 </table>
-</div>
+
 
 <!-- 게시판 하단 목록 검색 쓰기 버튼-->
 	<div class="fl_fr" id="bListW_menu">
@@ -140,15 +142,14 @@
       <i class="fas fa-angle-left"></i>&nbsp;
      </c:if>
      <c:if test="${page>1}">
-      <a href="board_list.do?page=${page-1}"><i class="fas fa-angle-left"></a>&nbsp;
+      <a href="board_list.do?page=${page-1}"><i class="fas fa-angle-left"></i></a>&nbsp;
      </c:if>
      
      <%--현재 쪽번호 출력 --%>
      <c:forEach var="a" begin="${startpage}" end="${endpage}" step="1">
-      <c:if test="${a == page}"> <%-- 현재 페이지가 선택된 경우 --%>
-       <${a}>
+      <c:if test="${a == page}">${a}<%-- 현재 페이지가 선택된 경우 --%>
       </c:if>
-      <c:if test="${a != page}"> <%--현재페이지가 선택 안된 경우 --%>
+      <c:if test="${a != page}"><%--현재페이지가 선택 안된 경우 --%>
       <a href="board_list.do?page=${a}">${a}</a>&nbsp;
       </c:if>      
      </c:forEach>
@@ -194,7 +195,7 @@
 	 
 	
 	</form>
-	
+	</div>
 </div>	
 
 </body>
