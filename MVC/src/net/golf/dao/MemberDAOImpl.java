@@ -146,6 +146,61 @@ public class MemberDAOImpl {//회원관리 JDBC
 		}
 		return m;
 	}//loginCheck()
+	
+	//회원 정보 수정 
+	public void updateMember(MemberVO m) {
+		try {
+			con=ds.getConnection();
+			sql="update golformemberNew set m_pw=?, m_phone=?, m_addr=?, m_email=?, m_gender=?, m_file=?, m_date=? where m_id=?";
+			
+			pt=con.prepareStatement(sql);
+			pt.setString(1, m.getM_pw());
+			pt.setString(2, m.getM_phone());
+			pt.setString(3, m.getM_addr());
+			pt.setString(4, m.getM_email());
+			pt.setString(5, m.getM_gender());
+			pt.setString(6, m.getM_file());
+			pt.setString(7, m.getM_date());
+			pt.setString(8, m.getM_id());
+			
+			
+			pt.executeUpdate();  
+					
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			try {
+				if(pt != null) pt.close();
+				if(con !=null) con.close();
+			}catch(Exception e) {e.printStackTrace();}
+			
+		}
+	}//updateMember()
+
+	public void delMember(MemberVO dm) {
+		try {
+			con=ds.getConnection();
+			sql="update golformemberNew set m_delcont=?, m_deldate=sysdate, m_state=2 where m_id=?";
+			
+			pt=con.prepareStatement(sql);
+			pt.setString(1, dm.getM_delcont());
+			pt.setString(2, dm.getM_id());
+			pt.executeUpdate();
+			
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			try {
+				if(pt != null) pt.close();
+				if(con !=null) con.close();
+			}catch(Exception e) {e.printStackTrace();}
+			
+			
+			
+		
+		}
+		
+	}//delMember()
+
+	
 }
 
 
