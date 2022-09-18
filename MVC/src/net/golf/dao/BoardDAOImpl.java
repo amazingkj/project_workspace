@@ -175,6 +175,26 @@ public class BoardDAOImpl {//게시판 DB연동
 		}		
 	}//updateHit()
 
+	//좋아요 증가 증가
+	public void updateLike(int b_no) {
+		try {
+			con=ds.getConnection();
+			sql="update golforboard set b_like=b_like+1 where b_no=?";
+			pt=con.prepareStatement(sql);
+			pt.setInt(1,b_no);
+			pt.executeUpdate();
+			
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+		  try {
+			  if(pt != null) pt.close();
+			  if(con != null) con.close();
+		  }catch(Exception e) {e.printStackTrace();}
+		}		
+	}//updateLike()
+	
+	
+	
 	//내용보기+수정폼+답변폼+삭제폼
 	public BoardVO getBoardCont(int b_no) {
 		BoardVO bc=null;
@@ -246,6 +266,53 @@ public class BoardDAOImpl {//게시판 DB연동
 		}
 	}//replyBoard()
 	
+
+
+	   public void updateBoard(BoardVO eb) {
+		      try {
+		         con=ds.getConnection();
+		         sql="update golforboard set b_id=?,b_title=?,b_cont=? where b_no=?";
+		         pt=con.prepareStatement(sql);
+		         pt.setString(1,eb.getB_name());
+		         pt.setString(2, eb.getB_title());
+		         pt.setString(3, eb.getB_cont());
+		         pt.setInt(4, eb.getB_no());
+		         
+		         pt.executeUpdate();//?섏젙 荑쇰━臾??섑뻾
+		         
+		      }catch(Exception e) {e.printStackTrace();}
+		      finally {
+		         try {
+		            if(pt != null) pt.close();
+		            if(con != null) con.close();
+		         }catch(Exception e) {e.printStackTrace();}
+		      }
+		   }//updateBoard()
+
+
+	   public void delBoard(int b_no) {
+		      try {
+		         con=ds.getConnection();
+		         sql = "delete from golforboard where b_no=?";
+		          pt = con.prepareStatement(sql);
+		          pt.setInt(1, b_no);
+		               
+		          pt.executeUpdate();
+
+		      }catch (Exception e) {
+		       e.printStackTrace();
+		      }
+		      finally {
+		         try {
+		            if(pt != null)pt.close();
+		            if(con != null)con.close();
+		         }catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		      }
+		   }//delBoard()
+
+
 	
 	
 	//getBoard_cont
