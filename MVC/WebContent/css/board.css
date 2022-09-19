@@ -38,13 +38,13 @@ table{
 
 /*하단 버튼부 좌측*/
 .fl_fr {
-	overflow: hidden;   display: inline;
+	overflow:hidden; display: inline-block; width: 500px;
 
 	
 }
 .fl{	
-	float:left;	margin-left: 30px; 
-		display :inline;
+	float:left;	margin-left: 30px; display: inline-block;
+		
 }
 
 /*하단 버튼부 우측*/
@@ -148,40 +148,8 @@ table{
 	width: 500px;
 	
 }
-/*
-.search_container{
-  border-color: #ccc;
-  vertical-align: middle;
-  white-space: nowrap;
-  line-height: 10px;
 
-  width: 164px;
-  margin-left:100px;
 
-}
-*/
-/*
-.search_container2{
-  border: 1px solid #ccc;
-  padding: 2px;
-  width: 164px;
-}
-
-*/
-/*
-.search_container input#search{
-  width: 140px;
-  height:38px;
-  background: #fff;
-  border: 0px;
-  border-radius :0;
-  font-size: 12px;
-  float: left;
-  color: #000;
-  padding-left: 15px;
-
-}
-*/
 select#search_target, select#search_page{
 	  height:38px;
 	  width:90px;
@@ -203,28 +171,27 @@ select#search_target, select#search_page{
 
 .fl_fr button[type="submit"]  {
   font-size: 12px;
-  border: 1px solid #ccc;
   margin-left: 0px;
   margin-right: 6px;
-  padding: 10px;
-  background-color: #ffffff;
-  color: #000000;
+  padding: 7px;
   cursor: pointer;
+  background: #56F569;
+  border: 0px;
+  color:white; 
+  
 }
 
 form.searchForm {
-	display: inline;
 	background-color: #56F569;
 }
-.search_container {
+div .search_container {
   background-color: #56F569;
   height: 40px;
   padding-left: 10px;
-  display: inline;
   line-height: 40px;
 }
 
-.icon {
+button .icon {
   padding:2px;
   color: #fff;
   float: right;
@@ -235,7 +202,8 @@ form.searchForm {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+  
+ }
 
 .search {
   padding: 0;
@@ -243,6 +211,7 @@ form.searchForm {
   border: none;
   outline: none;
   color: white;
+   display: inline-block;
 }
 
 

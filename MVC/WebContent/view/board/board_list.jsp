@@ -12,17 +12,19 @@
 
 
 <body>
+<form method="get" action="board_list.do">
 <div class="headclear">
+
 <div class="boardPage" >
 
 			<div class="page_select_div"> 
 			 <span class="page_select"> 
 			 <select id="search_page">
-					<option value="page5">5개씩</option>
-					<option value="page10">10개씩</option>
-					<option value="page20">20개씩</option>
-					<option value="page30">30개씩</option>
-					<option value="page40">40개씩</option>
+					<option value="5">5개씩</option>
+					<option value="10">10개씩</option>
+					<option value="20">20개씩</option>
+					<option value="30">30개씩</option>
+					<option value="40">40개씩</option>
 					
 			</select>
 			</span> 
@@ -70,7 +72,7 @@
 			
        			<td class="boardWriter">${b.b_name}</td>
          		<td class="boardDate">${b.b_date}</td>
-         		<td class="boardlike"><i class="fas fa-heart" style="color:#56F569"></i>&nbsp;&nbsp;&nbsp;0</td>
+         		<td class="boardlike"><i class="fas fa-heart" style="color:#56F569"></i>&nbsp;&nbsp;&nbsp;${b.b_like}</td>
      			<td class="boardView">${b.b_hit}</td>
 			
 			 </tr>
@@ -79,14 +81,13 @@
 
 	<c:if test="${empty blist}">
 	<tr>
-  	<th colspan="5">게시물 목록이 없습니다.</th>
+  	<th colspan="6">게시물 목록이 없습니다.</th>
      </tr>
     </c:if>
   
 
 	</tbody>
 </table>
-
 
 <!-- 게시판 하단 목록 검색 쓰기 버튼-->
 	<div class="fl_fr" id="bListW_menu">
@@ -97,65 +98,64 @@
      		</c:if>
 
 			<select id="search_target" name="find_field">
-					<option value="title_content" <c:if test="${find_field =='b_title'&& find_field =='b_cont'}">${'selected'}
+					<option value="title_cont" <c:if test="${find_field =='title_cont'}">${'selected'}
         			 </c:if>>제목+내용</option>
-					<option value="title" <c:if test="${find_field =='b_title'}">${'selected'}
+					<option value="b_title" <c:if test="${find_field =='b_title'}">${'selected'}
         			 </c:if>>제목</option>
-					<option value="content" <c:if test="${find_field =='b_cont'}">${'selected'}
+					<option value="b_cont" <c:if test="${find_field =='b_cont'}">${'selected'}
         			 </c:if>>내용</option>
+					<option value="b_name" <c:if test="${find_field =='b_name'}">${'selected'}
+        			 </c:if>>글쓴이</option> 
 				
-				
-				<%-- 댓글때문에 테이블 작업 다시 해야함 *** --%>	
+				<%-- 댓글때문에 테이블 작업 다시 해야함 *** 	
 				
 				<option value="comment" <c:if test="${find_field =='b_comm'}">${'selected'}
-        			 </c:if>>댓글</option>
-				<option value="user_name" <c:if test="${find_field =='b_name'}">${'selected'}
-        			 </c:if>>글쓴이</option>
+        			 </c:if>>댓글</option>	--%>
+			
 					
 			</select>
 
 				<div class="search_container" >
-					<form class="searchForm" action="." method="post">
-						<input id="search" class="search"  type="search" value="${find_name}" placeholder="검색어를 입력해 주세요">
+					<%-- <form class="searchForm" action="." method="post">--%>
+						<input id="search" class="search" name="find_name"  type="search" value="${find_name}" placeholder="검색어를 입력해 주세요">
 						<button class="icon" type="submit" ><i class="fas fa-search"></i>
 						</button>
-					</form>
+				
 				</div>
 
 			</div>
+				
 		<div class="fr">
+		 <c:if test="${!empty id}">
 			<input type="button" name="write" value="쓰기" onclick="location='board_write.do?page=${page}';"> <%--책갈피 기능 --%>
+		 </c:if>
 		</div>
 	<br><br>
 	</div>
-	<!-- 페이지 이동 바 -->
-	<form action="./" method="get" class="pg_change">
-	
-	    
+		
+
     
      <%--검색전후 페이징(쪽나누기) --%>
   
 	<div id="bList_paging" class="page_control">
 	 <%--검색 전 페이징 --%>
 	  <c:if test="${(empty find_field) && (empty find_name)}"> <%--검색필드와 검색어가 없는 경우 --%>
-     <c:if test="${page<=1}">
-      <i class="fas fa-angle-left"></i>&nbsp;
+     <c:if test="${page<=1}"><i class="fas fa-angle-left"></i>
      </c:if>
      <c:if test="${page>1}">
-      <a href="board_list.do?page=${page-1}"><i class="fas fa-angle-left"></i></a>&nbsp;
+      <a href="board_list.do?page=${page-1}"><i class="fas fa-angle-left"></i></a>
      </c:if>
-     
      <%--현재 쪽번호 출력 --%>
      <c:forEach var="a" begin="${startpage}" end="${endpage}" step="1">
       <c:if test="${a == page}">${a}<%-- 현재 페이지가 선택된 경우 --%>
       </c:if>
       <c:if test="${a != page}"><%--현재페이지가 선택 안된 경우 --%>
-      <a href="board_list.do?page=${a}">${a}</a>&nbsp;
+      <a href="board_list.do?page=${a}">${a}</a>
       </c:if>      
      </c:forEach>
      
      <c:if test="${page >= maxpage}">
-       <i class="fas fa-angle-right"></i>
+      <i class="fas fa-angle-right"></i>
       </c:if>
       <c:if test="${page < maxpage}">
       <a href="board_list.do?page=${page+1}"><i class="fas fa-angle-right"></i></a>
@@ -165,38 +165,33 @@
     <%--검색이후 페이징(쪽나누기)--%>
     <c:if test="${(!empty find_field) || (!empty find_name)}"> 
       <c:if test="${page<=1}">
-      <i class="fas fa-angle-left"></i>&nbsp;
+      <i class="fas fa-angle-left"></i>
      </c:if>
      <c:if test="${page>1}">
-      <a href="board_list.do?page=${page-1}&find_field=${find_field}&find_name=${find_name}"><i class="fas fa-angle-left"></i></a>&nbsp;
+      <a href="board_list.do?page=${page-1}&find_field=${find_field}&find_name=${find_name}"><i class="fas fa-angle-left"></i></a>
       <%--get으로 find_field와 find_name을 전달해야 검색이후 페이징 목록을 유지한다. 검색필드와 검색어를 전달하지 않으면
       검색전 전체 페이징 목록으로 이동해서 검색효과가 사라진다. --%>
      </c:if>
      
      <%--현재 쪽번호 출력 --%>
      <c:forEach var="a" begin="${startpage}" end="${endpage}" step="1">
-      <c:if test="${a == page}"> <%-- 현재 페이지가 선택된 경우 --%>
-       <${a}>
+      <c:if test="${a == page}">${a}<%-- 현재 페이지가 선택된 경우 --%>
       </c:if>
-      <c:if test="${a != page}"> <%--현재페이지가 선택 안된 경우 --%>
-      <a href="board_list.do?page=${a}&find_field=${find_field}&find_name=${find_name}">${a}</a>&nbsp;
+      <c:if test="${a != page}"><%--현재페이지가 선택 안된 경우 --%>
+      <a href="board_list.do?page=${a}&find_field=${find_field}&find_name=${find_name}">${a}</a>
       </c:if>      
      </c:forEach>
      
      <c:if test="${page >= maxpage}">
-       <i class="fas fa-angle-left"></i>
+       <i class="fas fa-angle-right"></i>
       </c:if>
       <c:if test="${page < maxpage}">
       <a href="board_list.do?page=${page+1}&find_field=${find_field}&find_name=${find_name}"><i class="fas fa-angle-right"></i></a>
       </c:if>
     </c:if>    
    </div>
-	 
-	 
-	
-	</form>
-	</div>
+</div>
 </div>	
-
+	</form>
 </body>
 </html>

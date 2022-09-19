@@ -39,9 +39,13 @@ public class BoardDAOImpl {//게시판 DB연동
 			if(findB.getFind_field() == null) {//검색전 총 레코드 개수
 				sql += "";
 			}else if(findB.getFind_field().equals("b_title")) {//검색필드가 글제목인 경우
-				sql+=" where b_title like ?";						
+				sql+=" where b_title like ?";
 			}else if(findB.getFind_field().equals("b_cont")) {//검색필드가 글내용인 경우
 				sql+=" where b_cont like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
+			}else if(findB.getFind_field().equals("b_name")) {//검색필드가 글쓴이인 경우
+			sql+=" where b_name like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
+			}else if(findB.getFind_field().equals("title_cont")) {//title+cont
+			sql+=" where b_title or b_cont like ?";
 			}
 			
 			pt=con.prepareStatement(sql);//쿼리문을 미리 컴파일 해서 수행할 pt생성
@@ -75,16 +79,20 @@ public class BoardDAOImpl {//게시판 DB연동
 		try {
 			con=ds.getConnection();
 			
-			sql="select * from (select rowNum rNum,b_no,b_name,b_title,"
-+"b_hit,b_ref,b_step,b_level,b_date from (select * from golforboard ";
+			sql="select * from (select rowNum rNum,b_no,b_name,b_title, "
++"b_hit,b_ref,b_step,b_level,b_date,b_like from (select * from golforboard ";
 			if(findB.getFind_field() == null) {//검색전
 				sql+="";
 			}else if(findB.getFind_field().equals("b_title")) {//제목을 검색할 경우
 				sql+=" where b_title like ?";
 			}else if(findB.getFind_field().equals("b_cont")) {//글내용을 검색할 경우
 				sql+=" where b_cont like ?";
+			}else if(findB.getFind_field().equals("b_name")) {//검색필드가 글쓴이인 경우
+				sql+=" where b_name like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
+			}else if(findB.getFind_field().equals("title_cont")) {//title+cont
+				sql+=" where b_title or b_cont like ?";
 			}
-			sql+=" order by b_ref desc,b_level asc)) where rNum >= ? and rNum<=?";
+			sql+=" order by b_ref desc,b_level asc)) where rNum >= ? and rNum<=? ";
 			/* 페이징과 검색관련 쿼리문. rowNum컬럼은 오라클에서 테이블 생성시 추가해 주는 컬럼으로 최초 레코드 저장시
 			 * 일련 번호값이 알아서 저장된다.rNum은 rowNum컬럼의 별칭이름이다.
 			 */
@@ -115,6 +123,7 @@ public class BoardDAOImpl {//게시판 DB연동
 				b.setB_ref(rs.getInt("b_ref"));
 				b.setB_step(rs.getInt("b_step"));
 				b.setB_date(rs.getString("b_date"));
+				b.setB_step(rs.getInt("b_like"));
 				
 				blist.add(b);//컬렉션에 추가
 			}
@@ -175,25 +184,6 @@ public class BoardDAOImpl {//게시판 DB연동
 		}		
 	}//updateHit()
 
-	//좋아요 증가 증가
-	public void updateLike(int b_no) {
-		try {
-			con=ds.getConnection();
-			sql="update golforboard set b_like=b_like+1 where b_no=?";
-			pt=con.prepareStatement(sql);
-			pt.setInt(1,b_no);
-			pt.executeUpdate();
-			
-		}catch(Exception e) {e.printStackTrace();}
-		finally {
-		  try {
-			  if(pt != null) pt.close();
-			  if(con != null) con.close();
-		  }catch(Exception e) {e.printStackTrace();}
-		}		
-	}//updateLike()
-	
-	
 	
 	//내용보기+수정폼+답변폼+삭제폼
 	public BoardVO getBoardCont(int b_no) {
@@ -217,6 +207,8 @@ public class BoardDAOImpl {//게시판 DB연동
 				bc.setB_ref(rs.getInt("b_ref"));
 				bc.setB_step(rs.getInt("b_step"));
 				bc.setB_level(rs.getInt("b_level"));
+				bc.setB_level(rs.getInt("b_like"));
+				
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -244,8 +236,8 @@ public class BoardDAOImpl {//게시판 DB연동
 			pt.executeUpdate();//수정 쿼리문 수행
 			
 			sql="insert into golforboard (b_no,b_name,b_title,b_pwd,b_cont,"
-+"b_ref,b_step,b_level,b_date) values(board_no_seq.nextval,?,?,?,?,?,?,?,"
-+"sysdate)"; 
++"b_ref,b_step,b_level,b_date,b_like) values(board_no_seq.nextval,?,?,?,?,?,?,?,"
++"sysdate,?)"; 
 			pt=con.prepareStatement(sql);
 			pt.setString(1,rb.getB_name());
 			pt.setString(2,rb.getB_title());
@@ -254,7 +246,7 @@ public class BoardDAOImpl {//게시판 DB연동
 			pt.setInt(5,rb.getB_ref());
 			pt.setInt(6,rb.getB_step()+1);
 			pt.setInt(7,rb.getB_level()+1);
-			
+			pt.setInt(7,rb.getB_like());
 			pt.executeUpdate();//저정 쿼리문 수행
 			
 		}catch(Exception e) {e.printStackTrace();}
@@ -278,7 +270,7 @@ public class BoardDAOImpl {//게시판 DB연동
 		         pt.setString(3, eb.getB_cont());
 		         pt.setInt(4, eb.getB_no());
 		         
-		         pt.executeUpdate();//?섏젙 荑쇰━臾??섑뻾
+		         pt.executeUpdate();
 		         
 		      }catch(Exception e) {e.printStackTrace();}
 		      finally {
@@ -317,42 +309,3 @@ public class BoardDAOImpl {//게시판 DB연동
 	
 	//getBoard_cont
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
