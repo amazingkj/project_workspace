@@ -60,7 +60,7 @@
 .submitBtn {
   font-size: 14px;
   border: none;
-  padding: 10px;
+  padding: 10px 10px 10px 10px;
   width: 260px;
   background-color: #56F569;
   margin-bottom: 20px;
@@ -73,33 +73,39 @@
     justify-content: space-between;
 }
 
-.checkbox {
+input .checkbox {
     text-align: center;
     align-items: center;
     font-size: 14px;  
+    
 }
 
 span,label{
-    font-size: 14px;
+    font-size: 13px;
     position: relative;
+    padding:3px;
+    margin-bottom:1px;
 }
  
+form .loginFormin {
+	margin-bottom: 5px;
+	
+} 
+ 
 /*비번찾기 회원가입하기 버튼*/ 
-.links button{
+input[type="button" i] {
   font-size:13px;
   color: #000000;
-  border-color: #EEEFF1;
+  border: 0px; 
+  margin-top:5px; 
+  cursor: pointer;
 }
 
 
 
 /* join*/
 
-* {
-  box-sizing: border-box;
-  border-radius: 0px;
 
-} 
 .join{
     display: flex;
     align-items: center;
@@ -133,16 +139,6 @@ span,label{
       margin-bottom: 10px;
 }
  
-.submitBtn {
-  font-size: 14px;
-  border: none;
-  padding: 10px;
-  width: 260px;
-  background-color: #56F569;
-  margin-bottom: 30px;
-  color: #000000;
-  cursor: pointer;
-} 
  
 .CheckBtn {
   font-size: 14px;
@@ -161,3 +157,6 @@ span,label{
   font-size:13px;
   color: #000000;
 }
+
+
+
