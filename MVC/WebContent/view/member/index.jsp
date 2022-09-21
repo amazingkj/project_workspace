@@ -4,10 +4,11 @@
 <html>
 <head>
 <title>Insert title here</title>
+<jsp:include page="/view/includes/header.jsp" /> 
 </head>
 <body>
 
-메인페이지 입니다. 
+<div>메인페이지 입니다. </div>
 
 
 </body>
