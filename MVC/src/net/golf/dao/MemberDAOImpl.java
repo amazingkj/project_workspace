@@ -5,7 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -91,34 +99,6 @@ public class MemberDAOImpl {//회원관리 JDBC
 	}//insertMember()
 	
 
-	//비번찾기
-	public MemberVO pwdMember(MemberVO m) {
-		MemberVO pm=null;
-		
-		try{
-			con=ds.getConnection();
-			sql="select m_pw from golformemberNew where m_id=? and m_name=?";
-			//회원아이디와 이름을 기준으로 오라클로부터 비번을 검색
-			pt=con.prepareStatement(sql);
-			pt.setString(1,m.getM_id());
-			pt.setString(2,m.getM_name());
-			rs=pt.executeQuery();
-			
-			if(rs.next()) {
-				pm=new MemberVO();
-				pm.setM_id(rs.getString("m_pw"));
-			}
-		}catch(Exception e) {e.printStackTrace();}
-		finally {
-			try {
-				if(rs != null) rs.close();
-				if(pt != null) pt.close();
-				if(con != null) con.close();
-			}catch(Exception e) {e.printStackTrace();}
-		}
-		return pm;
-	}//PwdMember()
-
 	//로그인 인증처리
 	public MemberVO loginCheck(String id) {
 		MemberVO m=null;
@@ -193,12 +173,45 @@ public class MemberDAOImpl {//회원관리 JDBC
 				if(con !=null) con.close();
 			}catch(Exception e) {e.printStackTrace();}
 			
-			
-			
 		
 		}
 		
 	}//delMember()
+	
+	
+	
+	//비밀번호 찾기에서 메일로 보낼 비밀번호 추출하기 
+	public MemberVO MailSender(String email) {
+		MemberVO pm=null;
+		try {
+			con=ds.getConnection();
+			sql="select m_id,m_pw from golformemberNew where m_email=? and m_state=1";
+			
+			pt=con.prepareStatement(sql);
+			pt.setString(1, email);
+			pt.executeUpdate();
+			rs=pt.executeQuery();
+			
+			if(rs.next()) {
+				pm=new MemberVO();
+				pm.setM_id(rs.getString("m_id"));
+				pm.setM_pw(rs.getString("m_pw"));
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			try {
+				  if(rs != null) rs.close();
+				  if(pt != null) pt.close();
+				if(con !=null) con.close();
+				
+			}catch(Exception e) {e.printStackTrace();}
+					
+		}
+		return pm;
+		
+	}//비밀번호 찾기에서 메일로 보낼 비밀번호 추출하기 
+
+
 
 	
 }
