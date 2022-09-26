@@ -6,10 +6,8 @@
 <title> </title>
 <link rel="stylesheet" type="text/css" href="./css/common.css" />
 <link rel="stylesheet" type="text/css" href="./css/board.css" />
-<link rel="stylesheet" type="text/css" href="./css/header.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 <jsp:include page="/view/includes/header.jsp" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 
 <script type="text/javascript">
 
@@ -31,28 +29,14 @@ function Change(idx){
 
 
 <body>
-<Br><div><h3>자유게시판</h3></div>
+<Br><br>
+<div class="board_title"><h3>자유게시판</h3></div>
 <form method="get" action="board_list.do">
 <div class="headclear">
 
 
 <div class="boardPage" >
-			<%--페이지 수대로 리스트하기  --%>
-			<div class="page_select_div"> 
-			 <span class="page_select"> 
-			 <select id="search_page" name="search_page" onchange="Change(1)">
-					<option value="10" <c:if test="${search_page == 10}">selected="selected"
-        			 </c:if>>10개씩</option>  
-        			 <option value="20" <c:if test="${search_page == 20}">selected="selected"
-        			 </c:if>>20개씩</option>  
-        			 <option value="30" <c:if test="${search_page == 30}">selected="selected"
-        			 </c:if>>30개씩</option>  
-        			 <option value="40" <c:if test="${search_page == 40}">selected="selected"
-        			 </c:if>>40개씩</option>  
-			</select>
-			</span> 
-			</div>
-			
+	
 <div class="boardListDiv">
 
  <div class="bList_count">게시물 수: ${listcount}</div> 
@@ -81,17 +65,17 @@ function Change(idx){
    		      ${b.b_ref}
        		</c:if>&nbsp;</td>
 
-			<td class=boardSubject style="text-align: left;padding-left: 5px">
+			<td class=boardSubject style="text-align:left; padding-left: 5px">
 			<c:if test="${b.b_step != 0}"> <%--답변글일때만 실행, 들여쓰기와 답변글 이미지 노출 --%>
          	<c:forEach begin="1" end="${b.b_step}" step="1">
         		  &nbsp; <%--답변글만큼 들여쓰기 --%>
         	 </c:forEach>
-         	<i class="fas fa-reply fa-rotate-180"style="font-size:1.7em;color:#cdcdcd"></i><%--답글 아이콘 --%>
+         	<i class="fas fa-reply fa-rotate-180"style="font-size:1.7em; color:#cdcdcd"></i><%--답글 아이콘 --%>
      	   </c:if>
      		 <a href="board_cont.do?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a>
     		</td>
 			
-       			<td class="boardWriter">${b.b_name}</td>
+       			<td class="boardWriter">${b.m_id}</td>
          		<td class="boardDate">${b.b_date}</td>
          		<td class="boardlike"><i class="fas fa-heart" style="color:#56F569"></i>&nbsp;&nbsp;&nbsp;${b.b_like}</td>
      			<td class="boardView">${b.b_hit}</td>
@@ -105,9 +89,7 @@ function Change(idx){
   	<th colspan="6">게시물 목록이 없습니다.</th>
      </tr>
     </c:if>
-  <tr colspan="6">
-  <td>버튼</td>   <td>버튼</td>   <td>버튼</td>   <td>버튼</td>   <td>버튼</td> <td>버튼</td> 
-  </tr>
+
 	</tbody>
 </table>
 
@@ -126,7 +108,7 @@ function Change(idx){
         			 </c:if>>제목</option>
 					<option value="b_cont" <c:if test="${find_field =='b_cont'}">${'selected'}
         			 </c:if>>내용</option>
-					<option value="b_name" <c:if test="${find_field =='b_name'}">${'selected'}
+					<option value="m_id" <c:if test="${find_field =='m_id'}">${'selected'}
         			 </c:if>>글쓴이</option> 
 				
 				<%-- 댓글때문에 테이블 작업 다시 해야함 *** 	
@@ -137,6 +119,9 @@ function Change(idx){
 					
 			</select>
 
+			
+
+			</div>
 				<div class="search_container" >
 					<%-- <form class="searchForm" action="." method="post">--%>
 						<input id="search" class="search" name="find_name"  type="search" value="${find_name}" placeholder="검색어를 입력해 주세요">
@@ -144,8 +129,6 @@ function Change(idx){
 						</button>
 				
 				</div>
-
-			</div>
 				
 		<div class="fr">
 		 <c:if test="${!empty id}">

@@ -83,13 +83,13 @@
  </head>
  <div class="clear"></div>
  <body class="tablebody">
-
-<div id="bWrite_wrap" > <%--제목도 멀티폼으로 --%>
+<br><br>
+<div id="bWrite_wrap" class="margin" style="margin-top: 200px"> <%--제목도 멀티폼으로 --%>
  <form method="post" action="board_reply_ok.do"
          onsubmit="return bw_check();">
    <table id="bWrite_t" class="tablebox">
      <%--이름 - 로그인해서 입력하면 그냥 입력되게 히든으로 ! 처리하기 --%>
-  	 <tr><td><input type="hidden" name="b_name" id="b_name" value="${bc.b_name}"/>
+  	 <tr><td><input type="hidden" name="m_id" id="m_id" value="${b.m_id}"/>
   	 <%--답변 히든값 --%>
     <input type="hidden" name="b_ref" value="${bc.b_ref}" />
      <%-- 원본글과 답변글을 묶어주는 그룹번호 --%>
@@ -104,12 +104,12 @@
   	 
      <tr>
       <td>제목</td>
-      <td class="bottom_line"><input name="b_title" size="50%" class="textField" maxlength="100" value="Re:${bc.b_title}" ></td>
+      <td class="bottom_line"><input name="b_title" size="100%" class="textField" maxlength="100" value="Re:${bc.b_title}" ></td>
    
     
      <tr>
       <td>내용</td>
-      <td class="bottom_line"><textarea name="b_cont" id="summernote" cols="50%" rows="25%" ></textarea></td>
+      <td class="bottom_line"><textarea name="b_cont" id="summernote" cols="70%" rows="100%" ></textarea></td>
      </tr>
    	<tr>
    	  <td></td>

@@ -4,7 +4,6 @@
  <head><meta charset="UTF-8">
  <link rel="stylesheet" type="text/css" href="./css/common.css" />
  <link rel="stylesheet" type="text/css" href="./css/board.css" />
-  <link rel="stylesheet" type="text/css" href="./css/header.css" />
  <jsp:include page="/view/includes/header.jsp" /> 
 
 
@@ -88,29 +87,28 @@
  <title>게시판 글쓰기</title>
  </head>
  <div class="clear"></div>
-
  <body class="tablebody">
-
-<div id="bWrite_wrap" class="margin" > <%--제목도 멀티폼으로 --%>
+<br><br>
+<div id="bWrite_wrap" class="margin" style="margin-top: 200px" > <%--제목도 멀티폼으로 --%>
  <form method="post" action="board_write_ok.do" onsubmit="return bw_check();">
    <table id="bWrite_t" class="tablebox">
      <%--이름 - 로그인해서 입력하면 그냥 입력되게 히든으로 ! 처리하기 --%>
-  	 <tr><td><input type="hidden" name="b_name" id="b_name" value="${bc.b_name}"/></td></tr>
+  	 <tr><td><input type="hidden" name="m_id" id="m_id" value="${id}"/></td></tr>
     
      <tr>
       <td>제목</td>
-      <td class="bottom_line"><input name="b_title" size="50%" class="textField" maxlength="100"/></td>
+      <td class="bottom_line"><input name="b_title" class="textField" size="100%"/></td>
    
     
      <tr>
       <td>내용</td>
-      <td class="bottom_line"><textarea name="b_cont" id="summernote" cols="50%" rows="25%" ></textarea></td>
+      <td class="bottom_line"><textarea name="b_cont" id="summernote" cols="70%" rows="100%" ></textarea></td>
      </tr>
      
    	<tr>
    	  <td></td>
       <td class="buttontd" colspan="2"><input type="submit" class="submitBtn" value="등록" />
-       <input type="reset" class="CheckBtn" value="취소"/></td>
+       <input type="reset" class="CheckBtn" value="취소"/><input type="reset" class="CheckBtn" value="목록" onclick="location='board_list.do?page=${page}';"/></td>
      </tr>
  
     </table>

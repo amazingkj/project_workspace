@@ -3,6 +3,7 @@ package com.GolForYou.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.GolForYou.dao.BoardDAOImpl;
 import com.GolForYou.vo.BoardVO;
@@ -16,6 +17,7 @@ public class BoardContController implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
 		
 		int b_no = Integer.parseInt(request.getParameter("b_no"));//get으로 전달된 게시물번호를
 		//받아서 정수 숫자로 변경해서 저

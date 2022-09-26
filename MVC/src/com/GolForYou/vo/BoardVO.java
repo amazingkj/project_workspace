@@ -3,7 +3,7 @@ package com.GolForYou.vo;
 public class BoardVO {
 	
 	private int b_no;
-	private String b_name;
+	private String m_id;
 	private String b_title;
 	private String b_pwd;
 	private String b_cont;
@@ -22,17 +22,18 @@ public class BoardVO {
 	//검색 기능
 	private String find_name;//검색어
 	private String find_field;//검색 필드
+	
 	public int getB_no() {
 		return b_no;
 	}
 	public void setB_no(int b_no) {
 		this.b_no = b_no;
 	}
-	public String getB_name() {
-		return b_name;
+	public String getM_id() {
+		return m_id;
 	}
-	public void setB_name(String b_name) {
-		this.b_name = b_name;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 	public String getB_title() {
 		return b_title;
@@ -80,16 +81,14 @@ public class BoardVO {
 		return b_date;
 	}
 	public void setB_date(String b_date) {
-		this.b_date = b_date.substring(0,10);
+		this.b_date = b_date;
 	}
-	
 	public int getB_like() {
 		return b_like;
 	}
 	public void setB_like(int b_like) {
 		this.b_like = b_like;
 	}
-	
 	public int getStartrow() {
 		return startrow;
 	}

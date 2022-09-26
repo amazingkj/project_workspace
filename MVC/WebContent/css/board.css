@@ -6,6 +6,7 @@
 
 .margin{
 	margin-bottom: 200px;
+	margin-top:200px;
 }
 .page_control a{
 	color: #000000; text-decoration: none; padding: 5px;
@@ -24,6 +25,12 @@ table{
 	border-collapse: collapse;
 }
 
+.board_title{
+	font-size:30px;
+	font-weight: bold;
+	margin: 170px 20px 10px 10px;
+	padding-left: 40px;
+}
 
 .boardlist {
 	width:100%;
@@ -42,12 +49,13 @@ table{
 
 /*하단 버튼부 좌측*/
 .fl_fr {
-	overflow:hidden; display: inline-block; width: 500px;
+	overflow:hidden; display: inline-block; width: 100%;
+	margin-top: 5px;
 
 	
 }
 .fl{	
-	float:left;	margin-left: 30px; display: inline-block;
+	float:left;	margin-left: 30px; display: inline-block; 
 		
 }
 
@@ -88,7 +96,7 @@ table{
 }
 
 .boardListDiv{
-	margin: 200px 20px 10px 10px;
+	margin: 50px 20px 10px 10px;
 	width:100%;
 
 }
@@ -135,25 +143,6 @@ table{
 /* button*/
 
 
-/*
- {
-  font-size: 14px;
-  border: none;
-  padding: 10px;
-  background-color: #56F569;
-  color: #000000;
-  cursor: pointer;
-} */
-
-
-.page_select_div{
-	float: right;
-	margin-top: 140px; margin-bottom: 5px;
-	width: 500px;
-	
-}
-
-
 select#search_target, select#search_page{
 	  height:38px;
 	  width:90px;
@@ -193,6 +182,8 @@ div .search_container {
   height: 40px;
   padding-left: 10px;
   line-height: 40px;
+  margin-left: 3px;
+  float: left;
 }
 
 button .icon {
@@ -223,12 +214,18 @@ button .icon {
 /*쓰기화면 - board_write.jsp*/
 
 
+.bWrite_wrap{
+	padding: 20px,10px;
+	margin-top: 100px;
+}
 .tablebox{
 	padding: 20px,10px;
 	align-items: center;
 	margin: auto;
 	border: none;
-	overflow: hidden;
+	overflow: hidden; 
+	width: 87%;
+	height: 100%;
 	
 }
 
@@ -309,10 +306,40 @@ table .bottom_line{
     overflow: auto;
 }
 
+
+
+
 table .buttontd {
+	align-items: center;
+	
+	
+}
+
+
+td .buttontd {
 	align-items: center;
 	margin: 0, auto;
 	
 }
 
 
+
+span .board_title_1{
+	position:relative;
+	width:400px;
+	height:45px;
+	font-size:36px;
+	font-weight:bold;
+	text-align:left;
+	right:585px;
+	top:-10px;
+	margin-top: 20px;
+}
+
+div #bDel_menu {
+	margin-top: 20px;
+}
+
+div #bDel_wrap {
+	margin : auto;
+}

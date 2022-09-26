@@ -20,7 +20,7 @@ request.setCharacterEncoding("UTF-8");
 		
 		int page=Integer.parseInt(request.getParameter("page"));
 		
-		String b_name=request.getParameter("b_name");
+		String m_id=request.getParameter("m_id");
 		String b_title=request.getParameter("b_title");
 		String b_pwd=request.getParameter("b_pwd");
 		String b_cont=request.getParameter("b_cont");
@@ -30,7 +30,7 @@ request.setCharacterEncoding("UTF-8");
 		
 		rb.setB_ref(b_ref); rb.setB_step(b_step);
 		rb.setB_level(b_level); 
-		rb.setB_name(b_name); rb.setB_title(b_title);
+		rb.setM_id(m_id); rb.setB_title(b_title);
 		rb.setB_pwd(b_pwd); rb.setB_cont(b_cont);
 		
 		BoardDAOImpl bdao=new BoardDAOImpl();

@@ -44,8 +44,8 @@ public class BoardDAOImpl {//게시판 DB연동
 				sql+=" where b_title like ?";
 			}else if(findB.getFind_field().equals("b_cont")) {//검색필드가 글내용인 경우
 				sql+=" where b_cont like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
-			}else if(findB.getFind_field().equals("b_name")) {//검색필드가 글쓴이인 경우
-			sql+=" where b_name like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
+			}else if(findB.getFind_field().equals("m_id")) {//검색필드가 글쓴이인 경우
+			sql+=" where m_id like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
 			}
 			
 			pt=con.prepareStatement(sql);//쿼리문을 미리 컴파일 해서 수행할 pt생성
@@ -89,7 +89,7 @@ public class BoardDAOImpl {//게시판 DB연동
 		try {
 			con=ds.getConnection();
 			
-			sql="select * from (select rowNum rNum,b_no,b_name,b_title, "
+			sql="select * from (select rowNum rNum,b_no,m_id,b_title, "
 +"b_hit,b_ref,b_step,b_level,b_date,b_like from (select * from golforboard ";
 			if(findB.getFind_field() == null) {//검색전
 				sql+="";
@@ -99,8 +99,8 @@ public class BoardDAOImpl {//게시판 DB연동
 				sql+=" where b_title like ?";
 			}else if(findB.getFind_field().equals("b_cont")) {//글내용을 검색할 경우
 				sql+=" where b_cont like ?";
-			}else if(findB.getFind_field().equals("b_name")) {//검색필드가 글쓴이인 경우
-				sql+=" where b_name like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
+			}else if(findB.getFind_field().equals("m_id")) {//검색필드가 글쓴이인 경우
+				sql+=" where m_id like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
 			}
 			sql+=" order by b_ref desc,b_level asc)) where rNum >= ? and rNum<=? ";
 			/* 페이징과 검색관련 쿼리문. rowNum컬럼은 오라클에서 테이블 생성시 추가해 주는 컬럼으로 최초 레코드 저장시
@@ -137,7 +137,7 @@ public class BoardDAOImpl {//게시판 DB연동
 				BoardVO b=new BoardVO();
 				b.setB_no(rs.getInt("b_no"));//board_no컬럼으로 부터 정수 숫자로 번호 레코드값을 가져와
 				//서 setter()메서드에 저장
-				b.setB_name(rs.getString("b_name"));
+				b.setM_id(rs.getString("m_id"));
 				b.setB_title(rs.getString("b_title"));
 				b.setB_hit(rs.getInt("b_hit"));
 				b.setB_ref(rs.getInt("b_ref"));
@@ -163,16 +163,16 @@ public class BoardDAOImpl {//게시판 DB연동
 	public void insertBoard(BoardVO b) {
 		try {
 			con=ds.getConnection();
-		    sql="insert into golforboard (b_no,b_name,b_title,b_cont,"
-+"b_ref,b_step,b_level,b_date) values(board_no_seq.nextval,'test',?,?,"
+		    sql="insert into golforboard (b_no,m_id,b_title,b_cont,"
++"b_ref,b_step,b_level,b_date) values(board_no_seq.nextval,?,?,?,"
 +"board_no_seq.nextval,?,?,sysdate)";
 		    
 		    pt=con.prepareStatement(sql);
-		    //pt.setString(1, b.getB_name());  --일단 test로 처리
-		    pt.setString(1, b.getB_title());	
-		    pt.setString(2, b.getB_cont());
-		    pt.setInt(3,0);
+		    pt.setString(1, b.getM_id());  
+		    pt.setString(2, b.getB_title());	
+		    pt.setString(3, b.getB_cont());
 		    pt.setInt(4,0);
+		    pt.setInt(5,0);
 		    
 		    pt.executeUpdate();//저장 쿼리문을 수행
 		}catch(Exception e) {e.printStackTrace();}
@@ -219,7 +219,7 @@ public class BoardDAOImpl {//게시판 DB연동
 			if(rs.next()) {
 				bc=new BoardVO();
 				bc.setB_no(rs.getInt("b_no"));
-				bc.setB_name(rs.getString("b_name"));
+				bc.setM_id(rs.getString("m_id"));
 				bc.setB_title(rs.getString("b_title"));
 				bc.setB_pwd(rs.getString("b_pwd"));
 				bc.setB_cont(rs.getString("b_cont"));
@@ -255,18 +255,18 @@ public class BoardDAOImpl {//게시판 DB연동
 			pt.setInt(2,rb.getB_level());
 			pt.executeUpdate();//수정 쿼리문 수행
 			
-			sql="insert into golforboard (b_no,b_name,b_title,b_pwd,b_cont,"
+			sql="insert into golforboard (b_no,m_id,b_title,b_pwd,b_cont,"
 +"b_ref,b_step,b_level,b_date,b_like) values(board_no_seq.nextval,?,?,?,?,?,?,?,"
 +"sysdate,?)"; 
 			pt=con.prepareStatement(sql);
-			pt.setString(1,rb.getB_name());
+			pt.setString(1,rb.getM_id());
 			pt.setString(2,rb.getB_title());
 			pt.setString(3,rb.getB_pwd());
 			pt.setString(4,rb.getB_cont());
 			pt.setInt(5,rb.getB_ref());
 			pt.setInt(6,rb.getB_step()+1);
 			pt.setInt(7,rb.getB_level()+1);
-			pt.setInt(7,rb.getB_like());
+			pt.setInt(8,rb.getB_like());
 			pt.executeUpdate();//저정 쿼리문 수행
 			
 		}catch(Exception e) {e.printStackTrace();}
@@ -283,9 +283,9 @@ public class BoardDAOImpl {//게시판 DB연동
 	   public void updateBoard(BoardVO eb) {
 		      try {
 		         con=ds.getConnection();
-		         sql="update golforboard set b_name=?,b_title=?,b_cont=? where b_no=?";
+		         sql="update golforboard set m_id=?,b_title=?,b_cont=? where b_no=?";
 		         pt=con.prepareStatement(sql);
-		         pt.setString(1,eb.getB_name());
+		         pt.setString(1, eb.getM_id());
 		         pt.setString(2, eb.getB_title());
 		         pt.setString(3, eb.getB_cont());
 		         pt.setInt(4, eb.getB_no());

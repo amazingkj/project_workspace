@@ -14,13 +14,13 @@ public class BoardWriteOKController implements Action {
 			HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");//post방식으로 전달된 한글 자료를 안깨지게 한다.
 		
-		String b_name=request.getParameter("b_name");//글쓴이
+		String m_id=request.getParameter("m_id");//글쓴이
 		String b_title=request.getParameter("b_title");
 		String b_pwd=request.getParameter("b_pwd");
 		String b_cont=request.getParameter("b_cont");
 		
 		BoardVO b=new BoardVO();
-		b.setB_name(b_name); b.setB_title(b_title);
+		b.setM_id(m_id); b.setB_title(b_title);
 		b.setB_pwd(b_pwd); b.setB_cont(b_cont);
 		
 		BoardDAOImpl bdao=new BoardDAOImpl();

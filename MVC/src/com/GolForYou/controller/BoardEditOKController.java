@@ -27,7 +27,7 @@ public class BoardEditOKController implements Action {
       page= Integer.parseInt(request.getParameter("page"));
       }
       
-      String b_name=request.getParameter("b_name");
+      String m_id=request.getParameter("m_id");
       String b_title=request.getParameter("b_title");
       String b_cont=request.getParameter("b_cont");
       
@@ -36,7 +36,7 @@ public class BoardEditOKController implements Action {
       
    
          BoardVO eb=new BoardVO();
-         eb.setB_no(b_no); eb.setB_name(b_name);
+         eb.setB_no(b_no); eb.setM_id(m_id);
          eb.setB_title(b_title); eb.setB_cont(b_cont);
          
          bdao.updateBoard(eb);//게시판 수정
