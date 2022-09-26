@@ -38,21 +38,30 @@ public class BoardDAOImpl {//게시판 DB연동
 			sql="select count(b_no) from golforboard ";
 			if(findB.getFind_field() == null) {//검색전 총 레코드 개수
 				sql += "";
+			}else if(findB.getFind_field().equals("title_cont")) {//title+cont
+				sql+=" where b_title like ? or b_cont like ?";
 			}else if(findB.getFind_field().equals("b_title")) {//검색필드가 글제목인 경우
 				sql+=" where b_title like ?";
 			}else if(findB.getFind_field().equals("b_cont")) {//검색필드가 글내용인 경우
 				sql+=" where b_cont like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
 			}else if(findB.getFind_field().equals("b_name")) {//검색필드가 글쓴이인 경우
 			sql+=" where b_name like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
-			}else if(findB.getFind_field().equals("title_cont")) {//title+cont
-			sql+=" where b_title like ? or b_cont like ?";
 			}
 			
 			pt=con.prepareStatement(sql);//쿼리문을 미리 컴파일 해서 수행할 pt생성
 			
 			if(findB.getFind_field() != null) {//검색필드가 있는 경우
-				pt.setString(1,findB.getFind_name());//쿼리문의 첫번째 물음표에 문자열로 검색어를 저장
-				pt.setString(2,findB.getFind_name());
+
+				if(findB.getFind_field().equals("title_cont")) {
+					pt.setString(1,findB.getFind_name());
+					pt.setString(2,findB.getFind_name());
+					
+				}else {
+					pt.setString(1,findB.getFind_name());
+				
+				}
+				
+				
 			}
 			
 			rs=pt.executeQuery();//검색 쿼리문 수행후 결과 레코드를 rs에 저장
@@ -84,16 +93,14 @@ public class BoardDAOImpl {//게시판 DB연동
 +"b_hit,b_ref,b_step,b_level,b_date,b_like from (select * from golforboard ";
 			if(findB.getFind_field() == null) {//검색전
 				sql+="";
+			}else if(findB.getFind_field().equals("title_cont")) {//title+cont
+				sql+=" where b_title like ? or b_cont like ?";
 			}else if(findB.getFind_field().equals("b_title")) {//제목을 검색할 경우
 				sql+=" where b_title like ?";
 			}else if(findB.getFind_field().equals("b_cont")) {//글내용을 검색할 경우
 				sql+=" where b_cont like ?";
 			}else if(findB.getFind_field().equals("b_name")) {//검색필드가 글쓴이인 경우
 				sql+=" where b_name like ?";//like는 ~와 비슷한 문자를 찾는다.검색연산자
-			}else if(findB.getFind_field().equals("title_cont")) {//title+cont
-				sql+=" where b_title like ? or b_cont like ?";
-				
-				
 			}
 			sql+=" order by b_ref desc,b_level asc)) where rNum >= ? and rNum<=? ";
 			/* 페이징과 검색관련 쿼리문. rowNum컬럼은 오라클에서 테이블 생성시 추가해 주는 컬럼으로 최초 레코드 저장시
@@ -107,10 +114,18 @@ public class BoardDAOImpl {//게시판 DB연동
 			int endrow=startrow+limit-1;//읽을 마지막 행번호
 			
 			if(findB.getFind_field() != null) {//검색하는 경우
-				pt.setString(1,findB.getFind_name());
-				pt.setString(2,findB.getFind_name());
-				pt.setInt(3,startrow);
-				pt.setInt(4,endrow);
+				
+				if(findB.getFind_field().equals("title_cont")) {
+					pt.setString(1,findB.getFind_name());
+					pt.setString(2,findB.getFind_name());
+					pt.setInt(3,startrow);
+					pt.setInt(4,endrow);
+				}else {
+					pt.setString(1,findB.getFind_name());
+					pt.setInt(2,startrow);
+					pt.setInt(3,endrow);
+				}
+				
 			}else {//검색하지 않는 경우
 				pt.setInt(1,startrow);
 				pt.setInt(2,endrow);

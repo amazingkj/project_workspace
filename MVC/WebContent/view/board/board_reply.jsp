@@ -4,6 +4,8 @@
  <head><meta charset="UTF-8">
  <link rel="stylesheet" type="text/css" href="./css/common.css" />
  <link rel="stylesheet" type="text/css" href="./css/board.css" />
+  <link rel="stylesheet" type="text/css" href="./css/header.css" />
+ <jsp:include page="/view/includes/header.jsp" /> 
  
  <%-- //현재 세션 상태 체크 
  	String id=null;

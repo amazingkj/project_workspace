@@ -6,26 +6,49 @@
 <title> </title>
 <link rel="stylesheet" type="text/css" href="./css/common.css" />
 <link rel="stylesheet" type="text/css" href="./css/board.css" />
+<link rel="stylesheet" type="text/css" href="./css/header.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+<jsp:include page="/view/includes/header.jsp" />
+
+
+<script type="text/javascript">
+
+function Change(idx){
+    var pagenum = idx;
+    var nowPaging = $("#search_page option:selected").val();
+    
+    if(nowPaging == 10){
+        location.href="./board_list.do?pageIndex="+pagenum+"&search_page="+nowPaging;    
+    }else if(nowPaging == 20){
+        location.href="./board_list.do?pageIndex="+pagenum+"&search_page="+nowPaging;    
+    }else if(nowPaging == 30){
+        location.href="./board_list.do?pageIndex="+pagenum+"&search_page="+nowPaging;    
+    } 
+}
+</script>
 
 </head>
 
 
 <body>
+<Br><div><h3>자유게시판</h3></div>
 <form method="get" action="board_list.do">
 <div class="headclear">
 
-<div class="boardPage" >
 
+<div class="boardPage" >
+			<%--페이지 수대로 리스트하기  --%>
 			<div class="page_select_div"> 
 			 <span class="page_select"> 
-			 <select id="search_page">
-					<option value="5">5개씩</option>
-					<option value="10">10개씩</option>
-					<option value="20">20개씩</option>
-					<option value="30">30개씩</option>
-					<option value="40">40개씩</option>
-					
+			 <select id="search_page" name="search_page" onchange="Change(1)">
+					<option value="10" <c:if test="${search_page == 10}">selected="selected"
+        			 </c:if>>10개씩</option>  
+        			 <option value="20" <c:if test="${search_page == 20}">selected="selected"
+        			 </c:if>>20개씩</option>  
+        			 <option value="30" <c:if test="${search_page == 30}">selected="selected"
+        			 </c:if>>30개씩</option>  
+        			 <option value="40" <c:if test="${search_page == 40}">selected="selected"
+        			 </c:if>>40개씩</option>  
 			</select>
 			</span> 
 			</div>
@@ -59,15 +82,13 @@
        		</c:if>&nbsp;</td>
 
 			<td class=boardSubject style="text-align: left;padding-left: 5px">
-			<c:if test="${b.b_step != 0}"> <%--답변글일때만 실행되고 들여쓰기와 답변글 이미지가 나옴 --%>
+			<c:if test="${b.b_step != 0}"> <%--답변글일때만 실행, 들여쓰기와 답변글 이미지 노출 --%>
          	<c:forEach begin="1" end="${b.b_step}" step="1">
         		  &nbsp; <%--답변글만큼 들여쓰기 --%>
         	 </c:forEach>
-         	<i class="fas fa-reply fa-rotate-180"style="font-size:1.7em;color:#cdcdcd"></i><%--답변글 이미지  --%>
+         	<i class="fas fa-reply fa-rotate-180"style="font-size:1.7em;color:#cdcdcd"></i><%--답글 아이콘 --%>
      	   </c:if>
      		 <a href="board_cont.do?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a>
-   			   <%-- *.do?board_no=번호&page=쪽번호&state=cont 주소창에 노출되는 get방식(쿼리스트링 방식)으로 3개의 피라미터
-    		  값을 &기호로 구분해서 전달함. --%>
     		</td>
 			
        			<td class="boardWriter">${b.b_name}</td>
@@ -84,8 +105,9 @@
   	<th colspan="6">게시물 목록이 없습니다.</th>
      </tr>
     </c:if>
-  
-
+  <tr colspan="6">
+  <td>버튼</td>   <td>버튼</td>   <td>버튼</td>   <td>버튼</td>   <td>버튼</td> <td>버튼</td> 
+  </tr>
 	</tbody>
 </table>
 

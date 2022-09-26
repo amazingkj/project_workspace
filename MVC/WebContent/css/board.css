@@ -4,6 +4,9 @@
 	clear: both;
 }
 
+.margin{
+	margin-bottom: 200px;
+}
 .page_control a{
 	color: #000000; text-decoration: none; padding: 5px;
 }
@@ -20,6 +23,7 @@
 table{
 	border-collapse: collapse;
 }
+
 
 .boardlist {
 	width:100%;
