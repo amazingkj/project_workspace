@@ -20,6 +20,7 @@ public class ChangePwdOKController implements Action {
 		PrintWriter out=response.getWriter();
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
+	
 		
 		if(id==null) {
 			//로그아웃 된 경우  
@@ -31,23 +32,23 @@ public class ChangePwdOKController implements Action {
 		}else {
 			request.setCharacterEncoding("UTF-8");//post 방식으로 이동 될때 꼭 넣어줄 것, 한글 데이터를 안깨지게 한다. 
 		
+			String new_pw = request.getParameter("new_mem_password_confirm");
 			
-			String old_pw = request.getParameter("mem_password");
-			String m_pw = request.getParameter("new_mem_password");
+			
 			
 			
 			MemberDAOImpl mdao=new MemberDAOImpl();
 			MemberVO m=new MemberVO(); //기준이 되는 아이디 , 아이디는 수정할 값이 아니다.
+	
 			
 			m.setM_id(id); 
-			m.setM_pw(old_pw); 
-			m.setM_pw(m_pw); 
+			m.setM_pw(new_pw); 
 			
 		       mdao.updatePassword(m); //회원정보 수정
 		         
 		         out.println("<script>");
 		         out.println("alert('회원정보 수정완료');");
-		         out.println("location='profile.do';");
+		         out.println("window.close();");
 		         out.println("</script>");
 
 			

@@ -234,11 +234,11 @@ public class MemberDAOImpl {//회원관리 JDBC
 	public void updatePassword(MemberVO m) {
 		try {
 			con=ds.getConnection();
-			sql="update golformemberNew set m_pw=? where m_pw=?";
+			sql="update golformemberNew set m_pw=? where m_id=?";
 			
 			pt=con.prepareStatement(sql);
 			pt.setString(1, m.getM_pw());
-			pt.setString(2, m.getM_pw());
+			pt.setString(2, m.getM_id());
 			
 			
 			pt.executeUpdate();  

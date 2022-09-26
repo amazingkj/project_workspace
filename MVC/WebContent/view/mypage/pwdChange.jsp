@@ -4,11 +4,20 @@
 <link rel="stylesheet" type="text/css" href="./css/mypage.css" />
 
 </head>
+<script src="./js/jquery.js"></script>
 <script>
+
 function chPw_check(){
 
 	if($.trim($("#mem_password").val())==""){
 		alert("현재 비밀번호를 입력하세요");
+		$("#mem_password").val("").focus();
+		return false;
+	}
+	
+
+	if($.trim($("#mem_password").val())!='${old_pw}'){
+		alert("현재 비밀번호가 다릅니다.");
 		$("#mem_password").val("").focus();
 		return false;
 	}
@@ -26,7 +35,7 @@ function chPw_check(){
 	}
 	
 
-	if($.trim($("#new_mem_password").val())!=$.trim($("#new_mem_password_confirm").val()){
+	if($.trim($("#new_mem_password").val())!=$.trim($("#new_mem_password_confirm").val())){
 		alert("새 비밀번호와 새 비밀번호 확인에 동일한 비밀번호를 입력해주세요");
 		$("#new_mem_password").val("").focus();
 		return false;
@@ -45,7 +54,7 @@ function chPw_check(){
 				<input type="password" id="mem_password" name="mem_password"
 					placeholder="********" autocomplete="on">
 			</div>
-			
+
 			<div class="inputBox">
 			<label for="new_mem_password">새 비밀번호</label>
 				<input type="password" id="new_mem_password" name="new_mem_password"
