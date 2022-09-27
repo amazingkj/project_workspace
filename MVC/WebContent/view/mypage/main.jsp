@@ -11,7 +11,7 @@
 	<div id="content" style="margin:200px 0px 0px 0px">
 		<!-- left navigation -->
 		<div class="left_navi">
-			<h3>고객센터</h3>
+			<h3>마이페이지</h3>
 
 			<dl class="sub_menu">
 			
@@ -19,10 +19,10 @@
 					<a href="mypage.do">홈</a>
 				</dd>
 				<dd>
-					<a href="#">내 랭킹보기</a>
+					<a href="indivrank.do">내 랭킹보기</a>
 				</dd>
 				<dd>
-					<a href="#">수강내역</a>
+					<a href="class_main.do">수강내역</a>
 				</dd>
 				<dd>
 					<a href="customer_fnq.do">1:1문의</a>
@@ -54,25 +54,39 @@
 
 <div> 
 <div class="mypageMain">
+		
+			<c:if test="${!empty profile}"> 
 		<div class="box">
-			<img class="profileImg" src="./images/member/blank_profile.png">
+			<img id="image_section" class="profileImg" src="./upload/member${profile}" alt=""/>
+			
 		</div>
+			</c:if>
+			
+		<c:if test="${empty profile}"> 
+		<div class="box">
+			<img id="image_section" class="profileImg" src="./images/member/blank_profile.png" alt=""/>
+			
+		</div>
+			</c:if>
+		
 		<div class="inputBoxVertical" style="width:500px"  >
 			<c:if test="${!empty id}"> 
-			${id}님 로그인을 환영합니다.<br/>
-			${id}님의 랭킹은 ___
+			<strong>${id}</strong>님 로그인을 환영합니다.<br/>
+			<strong>${id}</strong>님의 주요 이용지역은 <strong>${m_addr}</strong> 입니다. <br/>
+			 <br/>
+			<a href="profile.do">회원정보 변경하기</a>
 			
 			</c:if>
 			</div>
 </div>
 <div class="mypageMain">
 	
-			<h2>신청한 강의</h2>
+			<h2>수강중인 강의</h2>
 	
 		<div class="inputBoxVertical" style="width:500px"  >
 			<c:if test="${!empty id}"> 
-			${id}님 로그인을 환영합니다.<br/>
-			${id}님의 랭킹은 ___
+			<strong>${id}</strong>님이 수강중인 강의는 ___입니다. <br/>
+		
 			</c:if>
 			</div>
 </div>
@@ -82,8 +96,8 @@
 	
 		<div class="inputBoxVertical" style="width:500px"  >
 			<c:if test="${!empty id}"> 
-			${id}님 로그인을 환영합니다.<br/>
-			${id}님의 랭킹은 ___
+			<strong>${id}</strong>님 로그인을 환영합니다.<br/>
+			
 			
 			<div class="ind_prof">
 			<strong id="ind_id">${id }</strong> 님은
@@ -103,8 +117,7 @@
 	
 		<div class="inputBoxVertical" style="width:500px"  >
 			<c:if test="${!empty id}"> 
-			${id}님 로그인을 환영합니다.<br/>
-			${id}님의 랭킹은 ___
+			예약하신 내역이 없습니다.
 			
 			</c:if>
 			</div>
