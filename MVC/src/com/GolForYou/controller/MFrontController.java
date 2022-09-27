@@ -13,14 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class MFrontController extends HttpServlet {
 	
-	/* 서블릿 자바 특징)
-	 *  1.서블릿은 HttpSerlvet로 부터 상속받는다. 
-	 *  2.서블릿은 온라인 웹상에서 누구나 다 접근 가능하게 public으로 선언한다.
-	 *  3.get or post 양쪽방식 모두 다 접근가능하게 service()메서드를 오버라이딩 해서 호출한다.
-	 *  4.HttpServletRequest  서블릿은 사용자 폼에서 입력한 정보를 서버로 가져오는 역할을 한다.
-	 *  5.HttpServletResponse 서블릿은 서버의 가공된 정보를 사용자 웹에 응답할 때 사용한다.
-	 */
-	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

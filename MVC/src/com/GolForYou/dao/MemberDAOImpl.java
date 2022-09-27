@@ -8,6 +8,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import com.GolForYou.vo.MemberVO;
+import com.GolForYou.vo.rankDTO;
 
 public class MemberDAOImpl {//회원관리 JDBC
 
@@ -89,14 +90,14 @@ public class MemberDAOImpl {//회원관리 JDBC
 	
 	
 	//회원저장
-	public int insertMember(MemberVO m) {
+	public int insertMember(MemberVO m, rankDTO r) {
 		int re=-1;//삭제 실패시 반환값
 		
 		try {
 			con=ds.getConnection();
 			sql="insert into golformemberNew (m_no,m_id,m_pw,m_phone,m_email,m_gender,m_date,m_state)"
 					+ "values(m_golf_seq.nextval,?,?,?,?,?,sysdate,1)";
-
+			
 			pt=con.prepareStatement(sql);
 			pt.setString(1,m.getM_id());
 			pt.setString(2,m.getM_pw());
@@ -104,9 +105,18 @@ public class MemberDAOImpl {//회원관리 JDBC
 			pt.setString(4,m.getM_email());
 			pt.setString(5,m.getM_gender());
 	
-			
 			re=pt.executeUpdate();//저장 쿼리문 수행후 성공한 레코드 행의 개수를 반환
 			
+			sql="insert into ranking (r_no,r_id,r_province)"
+					+ "values(test_r_no.nextval,?,?)";
+			
+			
+			pt=con.prepareStatement(sql);
+			pt.setString(1,r.getR_id());
+			pt.setString(2,r.getR_province());
+			
+			re=pt.executeUpdate();
+		
 		}catch(Exception e) {e.printStackTrace();}
 		finally {
 			try {
@@ -150,17 +160,14 @@ public class MemberDAOImpl {//회원관리 JDBC
 	public void updateMember(MemberVO m) {
 		try {
 			con=ds.getConnection();
-			sql="update golformemberNew set m_pw=?, m_phone=?, m_addr=?, m_email=?, m_gender=?, m_file=?, m_date=? where m_id=?";
+			sql="update golformemberNew set m_phone=?, m_addr=?, m_email=?, m_file=? where m_id=?";
 			
 			pt=con.prepareStatement(sql);
-			pt.setString(1, m.getM_pw());
-			pt.setString(2, m.getM_phone());
-			pt.setString(3, m.getM_addr());
-			pt.setString(4, m.getM_email());
-			pt.setString(5, m.getM_gender());
-			pt.setString(6, m.getM_file());
-			pt.setString(7, m.getM_date());
-			pt.setString(8, m.getM_id());
+			pt.setString(1, m.getM_phone());
+			pt.setString(2, m.getM_addr());
+			pt.setString(3, m.getM_email());
+			pt.setString(4, m.getM_file());
+			pt.setString(5, m.getM_id());
 			
 			
 			pt.executeUpdate();  

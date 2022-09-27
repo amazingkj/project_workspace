@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.GolForYou.dao.MemberDAOImpl;
 import com.GolForYou.vo.MemberVO;
+import com.GolForYou.vo.rankDTO;
 
 
 public class MemberJoinOKController implements Action {
@@ -25,14 +26,18 @@ public class MemberJoinOKController implements Action {
 		
 
 		MemberVO m=new MemberVO();
-		
+		rankDTO r=new rankDTO();
 	     m.setM_id(m_id); m.setM_pw(m_pw); m.setM_phone(m_phone); 
 	     m.setM_email(m_email); m.setM_gender(m_gender); 
 	     //m.getM_date();
 	     
-	     MemberDAOImpl mdao=new MemberDAOImpl();
-	     int re=mdao.insertMember(m);//회원 저장
+	     r.setR_id(m_id); r.setR_province("서울"); 
 	     
+	     
+	     
+	     MemberDAOImpl mdao=new MemberDAOImpl();
+	     int re=mdao.insertMember(m,r);//회원 저장
+	
 	     if(re==1) {
 	    	 ActionForward forward=new ActionForward();
 	    	 forward.setRedirect(true);//새로운 매핑주소로 이동

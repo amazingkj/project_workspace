@@ -24,7 +24,7 @@ public class MemberEditOKController implements Action {
 			//로그아웃 된 경우  
 			out.println("<script>");
 			out.println("alert('다시 로그인 하세요!);");
-			out.println("location='member_login.do';");
+			out.println("location='login.do';");
 			out.println("</script>");
 			
 		}else {
