@@ -81,7 +81,7 @@ public class BoardVO {
 		return b_date;
 	}
 	public void setB_date(String b_date) {
-		this.b_date = b_date;
+		this.b_date = b_date.substring(0,10);
 	}
 	public int getB_like() {
 		return b_like;
