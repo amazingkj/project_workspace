@@ -103,7 +103,7 @@
 			<strong id="ind_id">${id }</strong> 님은
 			</div>
 			<div class="ind_prof">
-			<img id="tier_img" src="${tierURL }" alt="티어이미지">
+			<img id="tier_img" src="${tierURL }" alt="티어이미지" width="25" height="25" />
 			<strong style="font-color:red">${tierStr }</strong> 등급입니다
 			</div>
 			

@@ -63,7 +63,7 @@ public class ProfileEditController implements Action {
 				String fileDBName = "/"+refileName;
 				Mupfile.renameTo(new File(saveFolder+"/"+refileName)); 
 				m.setM_file(fileDBName);
-				
+				 // for + if 문 으로 id + 넘버 추가 시켜서 , 계속해서 업데이트 될 수 있도록 할 것 
 			}		
 			
 		
@@ -73,23 +73,23 @@ public class ProfileEditController implements Action {
 			m.setM_addr(m_addr);
 			
 			
-			
 			r.setR_id(id);
 			r.setR_province(m_addr);
 			
-			int re = mdao.updateMember(m,r); 
-			if(re==1) {
+			mdao.updateMember(m,r); 
+			
+			
+			
 			 out.println("<script>");
 	         out.println("alert('회원정보 수정완료');");
 	         out.println("location='mypage.do';");
 	         out.println("</script>");
 	         	System.out.println("성공");
 	         	
-	         
-				
+	         	
 			}
 			
-		}
+		
 		return null;
 	}
 
