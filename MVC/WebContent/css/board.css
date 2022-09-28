@@ -310,7 +310,7 @@ table .bottom_line{
 
 
 table .buttontd {
-	align-items: center;
+	float: right;
 	
 	
 }

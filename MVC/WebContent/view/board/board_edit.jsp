@@ -4,7 +4,6 @@
  <head><meta charset="UTF-8">
  <link rel="stylesheet" type="text/css" href="./css/common.css" />
  <link rel="stylesheet" type="text/css" href="./css/board.css" />
-  <link rel="stylesheet" type="text/css" href="./css/header.css" />
  <jsp:include page="/view/includes/header.jsp" /> 
  
  <%-- //현재 세션 상태 체크 
@@ -82,46 +81,43 @@
  <title>게시판 글쓰기</title>
  </head>
  <div class="clear"></div>
- <body class="tablebody">
+ <body class="tablebody" >
 <br><br>
-<div id="bWrite_wrap" class="margin" style="margin-top: 200px"> <%--제목도 멀티폼으로 --%>
- <form method="post" action="board_reply_ok.do"
+<div id="bWrite_wrap" style="margin-top: 200px" > <%--제목도 멀티폼으로 --%>
+ <form method="post" action="board_edit_ok.do"
          onsubmit="return bw_check();">
+         
    <table id="bWrite_t" class="tablebox">
      <%--이름 - 로그인해서 입력하면 그냥 입력되게 히든으로 ! 처리하기 --%>
-  	 <tr><td><input type="hidden" name="m_id" id="m_id" value="${id}"/>
-  	 <%--답변 히든값 --%>
-    <input type="hidden" name="b_ref" value="${bc.b_ref}" />
-     <%-- 원본글과 답변글을 묶어주는 그룹번호 --%>
-     <input type="hidden" name="b_step" value="${bc.b_step}" />
-  	 <%--원본글이면 0,첫번째 답변글이면 1 즉 원본글과 답변글을 구분하는 번호값이면서 몇번째 답변글인가를 알려준다. --%>
-     <input type="hidden" name="b_level" value="${bc.b_level}" />
-     <%--답변글 정렬순서 --%>
-     <input type="hidden" name="page" value="${page}" /></td></tr>
- 	 <%--페이징 즉 쪽나누기에서 책갈피 기능때문에 페이지번호를 히든으로 전달함.--%>
-         
-     
-  	 
+  	 <tr><td>  <input type="hidden" name="b_no" value="${bc.b_no}"/> <%--번호가 전달 --%>
+    <input type="hidden" name="page" value="${page}" /> <%--페이징 쪽나누기에서 책갈피 기능을 구현하기
+         위해서 히든으로 쪽번호를 전달.책갈피 기능이란 내가 본 페이지 번호로 바로 이동하는 것을 말한다. --%>     
+         <input type="hidden" name="m_id" id="m_id" value="${id}"/></td></tr>
+    
      <tr>
       <td>제목</td>
-      <td class="bottom_line"><input name="b_title" size="100%" class="textField" maxlength="100" value="Re:${bc.b_title}" ></td>
+      <td class="bottom_line"><input name="b_title" size="50%" class="textField" maxlength="100" value="${bc.b_title}"></td>
    
     
      <tr>
       <td>내용</td>
-      <td class="bottom_line"><textarea name="b_cont" id="summernote" cols="70%" rows="100%" ></textarea></td>
+      <td class="bottom_line"><textarea name="b_cont" id="summernote" cols="50%" rows="25%" >${bc.b_cont}</textarea></td>
      </tr>
+     
    	<tr>
    	  <td></td>
-      <td class="buttontd" colspan="2"><input type="submit" class="submitBtn" value="등록">
-       <input type="reset" class="CheckBtn" value="취소" onclick="$('b_cont').val('').focus();" > <input type="button" class="CheckBtn" 
-               value="목록" onclick="location='board_list.do?page=${page}';"/></td>
+      <td class="buttontd" colspan="2"><input type="submit" class="submitBtn" value="수정">
+       <input type="reset" class="CheckBtn" value="취소"><input type="button" class="CheckBtn"
+               value="목록" onclick="location='board_list.do?page=${page}';" /></td>
      </tr>
  
     </table>
     
-  
-     
+    	
+			
+	         
+		
+    
 </form>
 </div> 
 </body> 

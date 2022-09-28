@@ -200,3 +200,5 @@ function Change(idx){
 	</form>
 </body>
 </html>
+
+ <jsp:include page="/view/includes/footer.jsp" /> 

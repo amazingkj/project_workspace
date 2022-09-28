@@ -107,7 +107,7 @@
      
    	<tr>
    	  <td></td>
-      <td class="buttontd" colspan="2"><input type="submit" class="submitBtn" value="등록" />
+      <td class="buttontd"><input type="submit" class="submitBtn" value="등록" />
        <input type="reset" class="CheckBtn" value="취소"/><input type="reset" class="CheckBtn" value="목록" onclick="location='board_list.do?page=${page}';"/></td>
      </tr>
  

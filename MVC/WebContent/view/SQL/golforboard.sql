@@ -42,6 +42,7 @@ start with 1 --1부터 시작
 increment by 1 --1씩 증가
 nocache;
 
+drop sequence board_no_seq;
 -- 시퀀스 다음 번호값 확인
 select board_no_seq.nextval from dual;
 
