@@ -10,10 +10,6 @@ import com.GolForYou.vo.BoardVO;
 
 
 public class BoardContController implements Action {
-	/* 내용보기,답변글,수정폼,삭제폼
- 	 * 4개의 부분 뷰페이지가 실행됨. 
-	 */
-
 	@Override
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -22,6 +18,7 @@ public class BoardContController implements Action {
 		int b_no = Integer.parseInt(request.getParameter("b_no"));//get으로 전달된 게시물번호를
 		//받아서 정수 숫자로 변경해서 저
 		String state = request.getParameter("state");
+		String m_id = request.getParameter("m_id");
 		
 		int page=1;
 		if(request.getParameter("page") != null) {
@@ -41,6 +38,9 @@ public class BoardContController implements Action {
 		request.setAttribute("bc", bc);
 		request.setAttribute("page",page);//책갈피 기능때문에 쪽번호 저장
 		request.setAttribute("b_cont",b_cont);
+		
+		
+		request.setAttribute("m_id", m_id);
 		
 		ActionForward forward=new ActionForward();
 		forward.setRedirect(false);//기존 매핑주소와 키값을 유지

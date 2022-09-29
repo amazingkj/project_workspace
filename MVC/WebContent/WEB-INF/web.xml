@@ -26,7 +26,7 @@
    <!-- 일대 다 매핑구조를 실행할 수 있는 서블릿 하나당 다수의 매핑주소가 실행되는 서블릿 컨트롤러 설정 -->
    <servlet>
     <servlet-name>MFrontController</servlet-name> <!-- 서블릿 클래스명 -->
-    <servlet-class>net.golf.controller.MFrontController</servlet-class> 
+    <servlet-class>com.GolForYou.controller.MFrontController</servlet-class> 
     <!-- 풀패키지 경로 -->
    </servlet>
    <servlet-mapping>

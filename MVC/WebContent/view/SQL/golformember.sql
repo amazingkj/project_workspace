@@ -47,6 +47,7 @@ values (m_golf_seq.nextval,'test','test','010-2332-2332','ddd@test.gg','male',sy
 
 select * from golformemberNew where m_id='11' and m_state=1;
 select * from golformemberNew where m_id='h' and m_state=1;
+select * from golformemberNew;
 
 
 /*테이블 드랍*/
@@ -57,8 +58,10 @@ drop SEQUENCE m_golf_seq;
 
 
 
+select m_pw from golformemberNew where m_email='jiin724@naver.com';
+select m_id,m_pw from golformemberNew where and m_email='jiin724@naver.com' and m_state=1
 
-
+select m_id,m_pw from golformemberNew where m_email='jiin724@naver.com' and m_state=1
 
 
 

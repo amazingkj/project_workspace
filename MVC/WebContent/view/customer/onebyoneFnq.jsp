@@ -60,7 +60,7 @@ li {
 					<a href="customer_board.do">공지사항</a>
 				</dd>
 				<dd>
-					<a href="sitepolicy.do">환불규정</a>
+					<a href="customer_sitepolicy.do">환불규정</a>
 				</dd>
 				<dd>
 					<a href="customer_holeinone.do">홀인원보험</a>
@@ -81,7 +81,7 @@ li {
 	<!-- // left navigation -->
 
 	<%-- 1:1 문의--%>
-	<article class="consultForm">
+	<div class="consultForm">
 		<H3>1:1 문의하기</H3>
 		<br>
 
@@ -159,7 +159,7 @@ li {
 
 			</dl>
 		</form>
-	</article>
+	</div>
 		<div id="footer" style="margin: 10% 0% 0% 0%">
 	<%-- <jsp:include page="../include/foot.jsp" />--%>	
 	</div>
