@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="./css/footer.css" />
 </head>
 <body>
+<footer>
 		<br/>
 	<div id="foot_main"  > 
 
@@ -55,6 +56,7 @@
 			EVENT VENUES AND INTERNATIONAL GOLFORYOU.
 		</div>
 		</div>
-	</div>
+		</div>
+</footer>
 </body>
 </html>

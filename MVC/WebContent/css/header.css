@@ -1,5 +1,5 @@
 @charset "UTF-8";
-body{
+header{
 	background-color:#ffffff; /*본문 배경색*/
 	margin:0 auto; /*상하좌우 바깥여백을 없앰*/
 	padding:0px; /*상하좌우 안여백을 없앰 */
@@ -34,7 +34,7 @@ body{
 	margin:30px 0px 0px 30px; /*시계방향으로 위,오른쪽,아래쪽,왼쪽 바깥 여백을 동시에 지정*/
 }
 
- nav ul{
+.headerNav ul{
 	list-style:none; /* 목록앞 점을 없앰 */
     font-size:20px;/*글자크기*/  
     font-weight:80; /*글자 진하게*/
@@ -43,18 +43,18 @@ body{
     position: absolute; 
     color:#000000;  	  
 }
- nav ul li{
+.headerNav ul li{
 	float:left; margin:120px 7px 0px 38px;  
 }
- nav a{
-	display: block;  height:35px; padding:7px;
+.headerNav a{
+ height:35px; 
 	text-decoration: none; /*밑줄 선 제거*/
 }
- nav li a:hover, nav li:hover a{
+.headerNav li a:hover, nav li:hover a{
 	color:#000000;
 	text-decoration:none;
 }
- nav li ul{
+.headerNav li ul{
 display:none; 
 height:auto;
 border:0px;
@@ -62,14 +62,14 @@ position:absolute;
 width:150px;
 z-index:200;
 text-decoration: none;
-margin:185px 0px 0px -20px;
+margin:180px 0px 0px -20px;
 font-size:20px;
 text-align:center;
 }
- nav li:hover ul{
+.headerNav li:hover ul{
 display:block;
 }
- nav li li {
+.headerNav li li {
 background: rgba(255,255,255,0.9); /*투명도 0.8*/
 text-decoration: none;
 float:none;

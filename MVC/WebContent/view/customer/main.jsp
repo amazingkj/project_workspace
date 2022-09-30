@@ -22,7 +22,7 @@
 					<a href="customer_fnq.do">1:1문의</a>
 				</dd>
 				<dd>
-					<a href="customer_board.do">공지사항</a>
+					<a href="#">공지사항</a>
 				</dd>
 				<dd>
 					<a href="customer_sitepolicy.do">환불규정</a>
@@ -82,4 +82,4 @@
 
 <div class="clear"></div>
 </html>
-
+ <jsp:include page="/view/includes/footer.jsp" /> 

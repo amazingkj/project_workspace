@@ -1,7 +1,21 @@
 @charset "UTF-8";
 
+body { padding:0px; margin:0px;}
+ul{ padding:0px; margin:0px;}
+li{ padding:0px; margin:0px;}
+
+
 .headclear{
 	clear: both;
+}
+
+
+#name-tag {
+   padding-left: 40px;
+   padding-top: 70px;
+   margin:40px;
+   word-break: break-all;
+   word-wrap: break-word;
 }
 
 .margin{
@@ -74,8 +88,8 @@ table{
     background-color: white;
     display: block;
     overflow: hidden;
-    padding-right:40px;
-    padding-left:40px;
+    padding-right:60px;
+    padding-left:60px;
     padding-bottom: 5px; 
 }
 
