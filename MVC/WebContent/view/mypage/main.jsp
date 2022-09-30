@@ -85,7 +85,7 @@
 	
 		<div class="inputBoxVertical" style="width:500px"  >
 			<c:if test="${!empty id}"> 
-			<strong>${id}</strong>님이 수강중인 강의는 ___입니다. <br/>
+			<strong>${id}</strong>님 수강중인 강의가 없습니다. <br/>
 		
 			</c:if>
 			</div>
@@ -96,8 +96,6 @@
 	
 		<div class="inputBoxVertical" style="width:500px"  >
 			<c:if test="${!empty id}"> 
-			<strong>${id}</strong>님 로그인을 환영합니다.<br/>
-			
 			
 			<div class="ind_prof">
 			<strong id="ind_id">${id }</strong> 님은
@@ -125,4 +123,8 @@
 </div>
 
 </div>
+<br>
+<br>
+<br>
 </Body>
+

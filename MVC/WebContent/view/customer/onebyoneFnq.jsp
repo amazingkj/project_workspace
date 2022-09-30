@@ -57,7 +57,7 @@ li {
 					<a href="customer_fnq.do">1:1문의</a>
 				</dd>
 				<dd>
-					<a href="customer_board.do">공지사항</a>
+					<a href="#">공지사항</a>
 				</dd>
 				<dd>
 					<a href="customer_sitepolicy.do">환불규정</a>
@@ -161,8 +161,8 @@ li {
 		</form>
 	</div>
 		<div id="footer" style="margin: 10% 0% 0% 0%">
-	<%-- <jsp:include page="../include/foot.jsp" />--%>	
+
 	</div>
 </body>
-
+ <jsp:include page="/view/includes/footer.jsp" /> 
 

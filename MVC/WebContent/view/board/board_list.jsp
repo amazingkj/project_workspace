@@ -30,7 +30,11 @@ function Change(idx){
 
 <body>
 <Br><br>
-<div class="board_title"><h3>자유게시판</h3></div>
+<div class="clear" style="margin-top: 115px"></div>
+
+<h1 id="name-tag">자유게시판</h1>
+
+		
 <form method="get" action="board_list.do">
 <div class="headclear">
 
@@ -70,7 +74,7 @@ function Change(idx){
          	<c:forEach begin="1" end="${b.b_step}" step="1">
         		  &nbsp; <%--답변글만큼 들여쓰기 --%>
         	 </c:forEach>
-         	<i class="fas fa-reply fa-rotate-180"style="font-size:1.7em; color:#cdcdcd"></i><%--답글 아이콘 --%>
+         	<i class="fas fa-reply fa-rotate-180" style="font-size:1.7em; color:#cdcdcd"></i><%--답글 아이콘 --%>
      	   </c:if>
      		 <a href="board_cont.do?b_no=${b.b_no}&page=${page}&state=cont">${b.b_title}</a>
     		</td>

@@ -172,14 +172,40 @@ public class MemberDAOImpl {//회원관리 JDBC
 			pt.setString(1,id);
 			rs=pt.executeQuery();
 			
-			if(rs.next()) {
+			while(rs.next()) {
 				m=new MemberVO();
 				m.setM_pw(rs.getString("m_pw"));
 				m.setM_file(rs.getString("m_file"));//프로필 사진 경로
 				m.setM_addr(rs.getString("m_addr"));
 				m.setM_email(rs.getString("m_email"));
 				m.setM_phone(rs.getString("m_phone"));
+				
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			try {
+				if(rs != null) rs.close();
+				if(pt != null) pt.close();
+				if(con != null) con.close();
+			}catch(Exception e) {e.printStackTrace();}
+		}
+		return m;
+	}//loginCheck()
+	
+	
+	public String fileinfo(String id) {
+		String m=null;
+		
+		try {
+			con=ds.getConnection();
+			sql="select m_file from golformemberNew where m_id=?";
+			//아이디와 가입회원 1인 경우만 로그인 인증
+			pt=con.prepareStatement(sql);//쿼리문을 미리 컴파일 해서 수행할 pt생성
+			pt.setString(1,id);
+			rs=pt.executeQuery();
 			
+			while(rs.next()) {
+				m = rs.getString("m_file");				
 			}
 		}catch(Exception e) {e.printStackTrace();}
 		finally {
