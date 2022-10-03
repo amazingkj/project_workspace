@@ -1,0 +1,141 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	
+	font-weight: 900;
+	src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2)
+		format('woff2'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff)
+		format('woff'),
+		url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf)
+		format('opentype');
+}
+/*전체 범위*/
+* {
+	font-family: 'Noto Sans KR', sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+.ground-sort{
+	padding-left: 73%;
+	padding-top: 0%;
+	display: flex;
+}
+#name-tag {
+   padding-left: 40px;
+   padding-top: 70px;
+   margin:40px;
+   word-break: break-all;
+   word-wrap: break-word;
+}
+
+.ground-cont{
+	overflow: hidden;
+}
+
+
+.GolfCourse{
+	/*position: absolute;*/
+	width:100%;
+	float: left;
+	padding-top: 5%;
+	margin-left: 5%;
+	text-decoration-line: none;
+}
+
+/*검색 후 각 골프장 정보 div 박스*/
+.product{
+	margin: 10px;
+	float: left;
+	
+}
+
+.GolfCourselist{ /*원래 id=GolfCourse01이지만 충돌이 있어서 수정함.*/
+	margin: 10px;
+	float: left; 
+	
+}
+
+.golf1 {
+	margin: 10px;
+	background-color: #ffffff;
+	clear: both;
+	padding: 2px;
+	padding: 0;
+	border: none;
+	float:left;
+	
+	
+}
+
+.golf1:hover {
+	cursor: grab;
+	transform: scale(1.1);
+	background-color: #f1f1f1;
+}
+#GolfCourse01{
+	width:100%; height:1000px;
+	float: left; 
+}
+
+#GolfCourse02{
+	float: left; 
+}
+a{
+  text-decoration-line: none;
+  color:black;
+}
+.YeYag_list{
+	margin-left:5%;
+	margin-top:0%;
+	
+}
+
+/*검색바*/
+.searchtable{
+	overflow: hidden;
+	padding:10px;
+	padding-left:60%;
+}
+
+div .search-box {
+  
+  margin-left:75%;
+  background-color: #56F569;
+  height: 40px;
+  width:400px;
+  padding-left: 10px;
+  line-height: 40px;
+  float: right;
+}
+
+form #search{
+  background-color: #56F569;
+  width:100%;
+}
+
+.search-btn {
+  padding:2px;
+  color: #fff;
+  float: right;
+  width: 40px;
+  height: 40px;
+  line-height: 60px;
+  border:none;
+  background-color: #56F569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-txt {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  display: inline-block;
+  width: 80%;
+  font-size: 1.15em;
+}
