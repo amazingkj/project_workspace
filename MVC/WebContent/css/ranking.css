@@ -1,0 +1,376 @@
+@charset "UTF-8";
+
+/* ranking.jsp ui */
+
+body { padding:0px; margin:0px;}
+ul{ padding:0px; margin:0px;}
+li{ padding:0px; margin:0px;}
+
+
+#ranking_main{
+	position:relative;
+	background:rgba(0,0,0,0); width:1500px; height:1000px; text-align:center;
+	margin:140px 0px 0px 0px;
+	border:none;
+	margin-right:auto; margin-left:auto;
+	z-index:0;
+	top:100px;
+}
+.rank_title_1{
+	position:relative;
+	width:400px;
+	height:45px;
+	font-size:36px;
+	font-weight:bold;
+	text-align:left;
+	right:585px;
+	top:-10px;
+}
+.rank_title{
+	width:1100px;
+	height:45px;
+}
+.zone{
+	position:relative;
+	float:left;
+}
+#rank_tag{
+	width:1000px;
+	padding-left:150px;
+	font-size:36px;
+	font-weight:bold;
+	text-align:left;
+}
+.search-box {
+  position: relative;
+  background-color: #56F569;
+  height: 40px;
+  margin-bottom:3px;
+  padding-left: 10px;
+  display: inline;
+  line-height: 20px;
+  top:10px;
+  left:295px;
+  float:right;
+}
+.search-btn {
+  color: #fff;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #56F569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor:pointer;
+}
+
+.search-txt {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  top:-8px;
+}
+.rank_search{
+	position:relative;
+	width:385px;
+	height:50px;
+	border:none;
+	border-radius:3px;
+	margin:auto;
+	margin-top:5px;
+	margin-bottom:3px;
+	background-color: #56F569;
+	text-align:left;
+	float:right;
+	left:50px;
+}
+.search_txt{
+	position:relative;
+	margin:auto;
+	float:left;
+	border:1px solid #000;
+	border-radius:5px;
+	width:250px;
+	height:30px;
+	background:none;
+	outline:none;
+	padding:0px;
+	line-height:30px;
+	font-size:16px;
+	top:10px;
+	left:10px;
+	color:#fff;
+}
+
+.searchtier{
+	position:relative;
+	margin:auto;
+	font-size:16px;
+	padding:0px;
+	float:right;
+	width:80px;
+	height:40px;
+	line-height:30px;
+	top:10px;
+	left:290px;
+}
+
+.search_btn:hover{
+	background-color:#fff;
+	cursor:pointer;
+}
+
+.search_btn{
+	position:relative;
+	background-image:url(../images/dotboki_resize.png);
+	background-position:center center;
+	background-size:50%;
+	background-repeat:no-repeat;
+	border-radius:15px;
+	background-color:#d4d4d4;
+	width:30px;
+	height:30px;
+	margin:auto;
+	float:right;
+	top:10px;
+	right:5px;
+}
+.category{
+	position:relative;
+	border:none;
+	width:260px;
+	height:86%;
+	margin-left:50px;
+	padding-left:5px;
+	font-size:20px;
+	text-align:left;
+	float:left;
+}
+.province_1{
+	position:relative;
+	list-style:none;
+	margin:30px 5px;
+	cursor:pointer;
+}
+.province_1>li{
+	line-height:40px;
+}
+.province_1>li a{
+	color:#000;
+	text-decoration:none;
+}
+.province_1>li a:hover{
+	color:#56F569;
+}
+.province_1>li:hover .province_2#province_2-1{
+	height:50px;
+	transition-duration:0.5s;
+	cursor:pointer;
+}
+.province_1>li:hover .province_2#province_2-2{
+	height:85px;
+	transition-duration:0.5s;
+	cursor:pointer;
+}
+.province_1>li:hover .province_2#province_2-3{
+	height:120px;
+	transition-duration:0.5s;
+	cursor:pointer;
+}
+.province_1>li:hover .province_2#province_2-4{
+	height:155px;
+	transition-duration:0.5s;
+	cursor:pointer;
+}
+.province_2{
+	position:relative;
+	list-style:none;
+	overflow:hidden;
+	height:0;
+	font-size:0.9em;
+}
+.fas fa-map-marker-alt a:hover{
+	color:#56F569;
+}
+.rank_wrap{
+	position:relative;
+	border:none;
+	width:1100px;
+	height:86%;
+	margin:auto;
+	float:left;
+}
+.rank_wrap2{
+	position:relative;
+	border:none;
+	width:902px;
+	height:700px;
+	padding:0;
+	background:none;
+	margin:0px auto 0px auto;
+	float:center;
+	overflow:scroll;
+}
+.rank_wrap2::-webkit-scrollbar{	
+	width:15px;
+}
+.rank_wrap2::-webkit-scrollbar-thumb{
+	background-color:#d4d4d4;
+	border-radius:2px;
+}
+.rank_wrap2::-webkit-scrollbar-track{
+	background-color:#fff;
+	border-radius:2px;
+}
+.rankList{
+	position:relative;
+	border:0.5px solid #d4d4d4;
+	width:885px;
+	height:35px;
+	margin:15px auto 0px auto;
+	float:center;
+	background-color:#d4d4d4;
+	text-align:center;
+	font-size:1.2em;
+	left:-7px;
+}
+th#Listno{
+	padding-left:6px;
+}
+th#Listid{
+}
+.rank{
+	position:relative;
+	border:0.5px solid #d4d4d4;
+	width:880px;
+	height:70px;
+	margin:10px auto 0px auto;
+	float:center;
+	background-color:#fff;
+	box-shadow:0 0 5px  rgba(0,0,0,0.2);
+	font-size:12px;
+}
+.rank#rank1{
+	margin-top:5px;
+}
+.rank:hover{
+	background-color:#f0f0f0;
+}
+.rank:hover .rankno{
+	background-color:#f0f0f0;
+}
+.rank:hover .ranktier{
+	background-color:#f0f0f0;
+}
+.rank:hover .rankid{
+	background-color:#f0f0f0;
+}
+.rank:hover .rankpoint{
+	background-color:#f0f0f0;
+}
+.rank:hover .rankdriver{
+	background-color:#f0f0f0;
+}
+.rank:hover .rankcard{
+	background-color:#f0f0f0;
+}
+.rankno{
+	position:relative;
+	border:none;
+	width:37px;
+	height:37px;
+	float:left;
+	margin:16px 10px;
+	line-height:37px;
+	font-size:14px;
+	font-weight:bold;
+	background-color:#fff;
+}
+.rankprofile{
+	position:relative;
+	border:none;
+	border-radius:25px;
+	width:50px;
+	height:50px;
+	float:left;
+	margin:10px 10px;
+	background-color:#fff;
+	left:15px;
+}
+.rankid{
+	position:relative;
+	border:none;
+	width:200px;
+	height:50px;
+	float:left;
+	margin:10px 0px;
+	line-height:50px;
+	background-color:#fff;
+	left:18px;
+	font-size:1.1em;
+	font-weight:bold;
+}
+.rankpoint{
+	position:relative;
+	border:none;
+	width:50px;
+	height:50px;
+	float:left;
+	margin:10px 10px;
+	line-height:50px;
+	background-color:#fff;
+	left:53px;
+	font-size:1.1em;
+	font-weight:bold;
+}
+.rankdriver{
+	position:relative;
+	border:none;
+	width:75px;
+	height:50px;
+	float:left;
+	margin:10px 10px;
+	line-height:50px;
+	background-color:#fff;
+	left:99px;
+	font-size:1.1em;
+	font-weight:bold;
+}
+.rankcard{
+	position:relative;
+	border:none;
+	width:75px;
+	height:50px;
+	float:left;
+	margin:10px 10px;
+	line-height:50px;
+	background-color:#fff;
+	left:147px;
+	font-size:1.1em;
+	font-weight:bold;
+}
+.ranktier{
+	position:relative;
+	border:none;
+	font-size:0;
+	width:100px;
+	height:50px;
+	float:left;
+	margin:10px 10px;
+	background-color:#fff;
+	left:18px;
+}
+.rankprov{
+	display:none;
+}
+.tierPic{
+	position:relative;
+	width:55px;
+	height:55px;
+}
+
+

@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+#sccont_main{
+	position:relative;
+	background:rgba(0,0,0,0); width:1500px; height:1000px; text-align:center;
+	margin:140px 0px 0px 0px;
+	border:none;
+	margin-right:auto; margin-left:auto;
+	z-index:0;
+	top:100px;
+	font-size:1.2em;
+}
+.sccont_title_1{
+	position:relative;
+	width:400px;
+	height:45px;
+	font-size:36px;
+	font-weight:bold;
+	text-align:left;
+	right:585px;
+	top:-10px;
+}
+#sccont_tag{
+	width:1000px;
+	padding-left:150px;
+	font-size:36px;
+	font-weight:bold;
+	text-align:left;
+}
+.sccont_wrap{
+	position:relative;
+	border:none;
+	float:left;
+	width:1300px;
+	height:800px;
+	margin-left:4%;
+	top:10px;
+}
+.sccont_t{
+	position:relative;
+	float:left;
+	width:1000px;
+	height:700px;
+	top:10px;
+	left:150px;
+	border:none;
+}
+.sccont_text{
+	font-size:1.2em;
+	width:88%;
+	height:88%;
+	text-indent:15px;
+}
+#sccont_title{
+	font-weight: bold;
+}
+.sccont_menu{
+	position:relative;
+	width:1000px;
+	height:80px;
+	float:center;
+	text-align:center;
+}
+.submitBtn {
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  width: 260px;
+  background-color: #56F569;
+  margin-bottom: 30px;
+  color: #000000;
+  cursor: pointer;
+} 
+ 
+.CheckBtn_sccont {
+  font-size: 14px;
+  border: none;
+  margin-left: 5px;
+  margin-right: 5px;
+  float:center;
+  padding: 10px;
+  width: 100px;
+  background-color: #c0c0c0;
+  margin-bottom: 30px;
+  color: #000000;
+  cursor: pointer;
+}

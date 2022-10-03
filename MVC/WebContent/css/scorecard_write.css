@@ -1,0 +1,98 @@
+@charset "UTF-8";
+.scboardwrite_main{
+	position:relative;
+	background:rgba(0,0,0,0); width:1500px; height:1000px; text-align:center;
+	margin:140px 0px 0px 0px;
+	border:none;
+	margin-right:auto; margin-left:auto;
+	z-index:0;
+	top:100px;
+}
+.scwrite_wrap{
+	position:relative;
+	border:none;
+	float:left;
+	width:1300px;
+	height:800px;
+	margin-left:4%;
+	top:10px;
+	left:50px;
+	font-size: 1.2em;
+}
+#sc_file{
+	position:relative;
+	width:1px;
+	height:1px;
+}
+.sc_t{
+	position:relative;
+	float:left;
+	width:1000px;
+	height:700px;
+	top:20px;
+	left:150px;
+	border:none;
+}
+.sc_text{
+	position:relative;
+	width:88%;
+	height:88%;
+	margin:0 6%;
+	font-size: 1.2em;
+}
+.sc_date{
+	margin-left:12%;
+}
+#sc_cont{
+	resize:none;
+}
+.scwrite_hr{
+	position:relative;
+	width:96%;
+	top:50px;
+	float:center;
+	border:0;
+}
+#sc_playdate{
+	position:relative;
+	width:30px;
+	height:30px;
+	font-size:1.5em;
+	float:right;
+	right:10px;
+}
+#playdate_output{
+	position:relative;
+	height:30px;
+	width:50%;
+	float:right;
+	right:5px;
+}
+#file_route{
+	position:relative;
+	height:30px;
+	width:50%;
+	float:left;
+	left:10px;
+}
+.file_upload_button_sc{
+	position:relative;
+	color: #000;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	font-size: 14px;
+	line-height: 8px;
+	height: 30px;
+	cursor: pointer;	
+	padding:10px;
+	float:left;
+	left:5px;
+}
+#sc_submit{
+	float:right;
+	right:5px;
+}
+#sc_list{
+	float:left;
+	left:5px;
+}

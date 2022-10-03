@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.adminInsertCard_main{
+	position:relative;
+	background:rgba(0,0,0,0); width:1500px; height:1000px; text-align:center;
+	margin:140px 0px 0px 0px;
+	border:none;
+	margin-right:auto; margin-left:auto;
+	z-index:0;
+	top:100px;
+}

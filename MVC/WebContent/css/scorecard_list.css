@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+#scorecard_main{
+	position:relative;
+	background:rgba(0,0,0,0); width:1500px; height:1000px; text-align:center;
+	margin:140px 0px 0px 0px;
+	border:none;
+	margin-right:auto; margin-left:auto;
+	z-index:0;
+	top:100px;
+}
+.board_wrap{
+	position:relative;
+	border:none;
+	float:left;
+	width:1300px;
+	height:800px;
+	margin-left:4%;
+	top:10px;
+}
+#board_sclist{
+	font-size:1.2em;
+}
+.search-box_sc {
+  position: relative;
+  background-color: #56F569;
+  height: 40px;
+  margin-bottom:3px;
+  padding-left: 10px;
+  display: inline;
+  line-height: 40px;
+  float:left;
+}
+.search-btn_sc {
+  color: #fff;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #56F569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor:pointer;
+}
+.search-txt_sc {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.search_box_sc:hover > form .search_btn_sc{
+	background-color:#fff;
+	
+}
+.searchboard{
+	position:relative;
+	margin:auto;
+	font-size:16px;
+	padding:0px;
+	float:left;
+	width:90px;
+	height:40px;
+	line-height:30px;
+	left:-5px;
+}
+#CheckBtn_sc{
+	position:relative;
+	float:right;
+}
+.page_control {
+	position:relative;
+}
+
+.page_control a { color: black; font: bold; 	font-size: 0.8em; margin: 0px 2px;}
+.page_control a:visited { color: black; font: bold; font-size: 0.8em; margin: 0px 2px;}
+.page_control a:hover { color: #56F569; font: bold; font-size: 0.8em; margin: 0px 2px;}
+.page_control a:active { color: black; font: bold; 	font-size: 0.8em; margin: 0px 2px;}
+
+
