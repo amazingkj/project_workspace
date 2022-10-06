@@ -33,6 +33,7 @@
 - 발표 PPT 작성 및 시연 
 
 ## ERD Diagram
+![슬라이드8](https://user-images.githubusercontent.com/107861610/194225829-72ed3b22-5fb7-4567-be08-e2dfd17c6f5f.JPG)
 
 
 ## 프로그램 흐름도
