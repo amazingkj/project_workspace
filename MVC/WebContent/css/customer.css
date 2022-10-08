@@ -1,0 +1,346 @@
+@charset "UTF-8";
+
+body { padding:0px; margin:0px;}
+
+.clear{
+	clear:both;
+	display:none; 
+	margin: 0; auto;
+	overflow: hidden;
+}
+
+#content {
+	margin: 130px 0px 0px 0px;
+	padding: 0;
+
+}
+
+.cscenter{
+	width:1100px; overflow:hidden;
+
+}
+
+li {
+	list-style: none;
+}
+
+.left_navi {
+	position: relative;
+	border: none;
+	width: 260px;
+	height: 86%;
+	margin-left: 50px;
+	padding-left: 5px;
+	font-size: 20px;
+	text-align: left;
+	float: left;
+	color: #1f1f1f;
+}
+
+.sub_menu {
+	padding: 0px 0px 60px 0px;
+}
+
+.cscenter {
+	float: left;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+dl {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+dd {
+	margin: 15px 0px;
+	line-height: 18px;
+}
+
+dd a {
+	font-size: 15px;
+	color: #1f1f1f;
+}
+
+/*고객센터 네비바 하단*/
+ul {
+	margin :0px;
+	padding: 0px;
+}
+
+
+.left_navi .sub_menu_bt li {
+	line-height: 16px;
+	font-size: 13px;
+	letter-spacing: -.43px;
+	font-weight: 400;
+	color: #898989;
+}
+
+.left_navi .sub_menu_bt .callcenter {
+	padding-bottom: 9px;
+}
+
+.left_navi .sub_menu_bt .callno {
+	font: bold;
+	font-size: 20px;
+	padding-bottom: 9px;
+}
+
+.left_navi .sub_menu_bt {
+	padding-top: 32px 0px 24px 0px;
+}
+
+/*FAQ 가로 tab_menu*/
+
+.tab_list {
+	overflow:hidden;
+	padding: 0px 20px 20px 20px;
+}
+
+.tab_list li{
+	color: #898989;
+	float: left;
+	text-align: center;
+	padding : 15px;
+	margin : 0px 8px;
+	border: 1px solid #898989;
+	cursor: pointer;
+	
+}
+
+article h3{
+	margin: 23.4px 0px;
+	font-size: 2.2em
+	}
+
+
+.qnaForm{
+
+border-top: 4px solid #1f1f1f;
+
+}
+
+.qnaForm dl dt {
+    word-break: break-all;
+    word-wrap: break-word;
+    position: relative;
+    margin: 0 30px;
+    padding: 23px 132px 23px 34px;
+    font-size: 14px;
+    color: #898989;
+    background: url(https://assets.kolonmall.com/_ui/img/pc/icn/icn-qustion-2c3085d2bc.png) no-repeat 0 23px;
+    cursor: pointer;
+    line-height: 22px;
+}
+
+
+.qnaForm dl dd {
+    word-break: break-all;
+    word-wrap: break-word;
+    display:none;
+    padding: 25px 220px 34px 64px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #898989;
+    background: #f8f8f8 url(https://assets.kolonmall.com/_ui/img/pc/icn/icn-answer-42a200df40.png) no-repeat 30px 23px;
+}
+
+
+.qnaForm dl dt:after {
+    position: absolute;
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 9px;
+    right: 0;
+    top: 29px;
+    background: url(https://assets.kolonmall.com/_ui/img/pc/icn/icn-arrow-59feb4c198.png) 0 -9px;
+
+}
+/* 1:1 문의 */
+
+.consultForm{
+	margin: 40px 0px;
+}
+.consultQForm{
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	overflow:hidden;
+}
+
+.consultQForm dd span{
+	font-size: 12px;
+	padding: 0px 10px;	
+}
+
+.consultQForm dt{
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+	margin-top: 16px;
+	font-size: 0.9em;
+}
+
+#consult_type, #question_title, #question_contents, #question_email{
+	border: none;
+	margin-left: 10px;
+	background-color: #fff;
+    border: solid #dedede;
+    border-width: 0 0 1px;
+    height: 38px;
+	width: 400px;
+
+}
+
+ #question_file{
+	border: none;
+	margin-left: 10px;
+	background-color: #fff;
+    height: 38px;
+}
+
+#phone01, #phone02, #phone03{
+	border: none;
+	margin-left: 10px;
+	background-color: #fff;
+    border: solid #dedede;
+    border-width: 0 0 1px;
+    height: 38px;
+
+}
+
+
+.file-upload-button{
+	color: #000;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    height: 30px;
+    cursor: pointer;
+	padding: 5px 25px;
+	margin-left: 10px;
+}
+
+
+#question_file{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+
+}
+
+.consultQForm dd{
+	width: 875px;
+    min-height: 25px;
+    padding: 13px 0px 0px 0px;
+    margin: 5px 50px 5px 40px;
+
+}
+
+.consultMemo {
+	padding: 30px;
+	margin: 10px 300px; 
+	text-align: left;
+	background-color: #e6fbee;
+	
+}
+
+.consultMemo li{
+	margin: 0px 0px 4px 0px;
+}
+
+
+
+dd #question_contents{
+	
+	height: 130px;
+	width: 600px;
+
+    resize: none;
+    outline: none;
+}
+	
+
+.submitBtn {
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  width: 260px;
+  background-color: #56F569;
+  margin-bottom: 30px;
+  color: #000000;
+  cursor: pointer;
+}
+	
+	
+.etcBtn{
+  font-size: 14px;
+  border: none;
+  padding: 10px;
+  width: 260px;
+  background-color: #dedede;
+  margin-bottom: 30px;
+  color: #000000;
+  cursor: pointer;
+}
+	
+	
+/*홀인원보험*/
+
+.holeInOneBtn {
+	margin-top: 80px;
+	word-break: break-all;
+    word-wrap: break-word;
+	
+}
+.holeInOnePage {
+
+	margin: auto;
+	padding: 10px;
+	
+}
+.holeInOnePage li{
+	color: #898989;
+	text-align: center;
+	padding : 15px;
+	margin : 10px 8px;
+	width: 400px;
+	height: 60px;
+	border: 1px solid #898989;
+	cursor: pointer;
+	align-items: center;
+	background : white;
+	box-shadow: 3px 2px 3px;
+	float:left;
+	line-height: 60px;
+	
+}
+
+.holeInOnePage a { color: black; font: bold;}
+.holeInOnePage a:visited { color: black; font: bold;}
+.holeInOnePage a:hover { color: #56F569; font: bold;}
+.holeInOnePage a:active { color: black; font: bold;}
+	
+
+
+
+
+
+
