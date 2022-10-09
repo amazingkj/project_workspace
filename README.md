@@ -6,7 +6,7 @@
 2022.09.21 ~ 2022. 09. 29 (약 1달)
 
 ## 개발환경 
-- 주 개발 언어 : java
+- 주 개발 언어 : Java
 - DB : Oracle 11-21c
 - 사용 API : summernote, fontawesome, kakaoMap
 
