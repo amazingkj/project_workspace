@@ -35,6 +35,7 @@
   - 홀인원보험
 - 프로젝트 파일 통합
 - 발표 PPT 작성 및 시연 
+- 로고 및 메인이미지 등 브랜드 아이덴티티 작성
 
 ## ERD Diagram
 ![슬라이드8](https://user-images.githubusercontent.com/107861610/194709039-3d92259f-1208-4e66-b783-47580cca1bda.JPG)
